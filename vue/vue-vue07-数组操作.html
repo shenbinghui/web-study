@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 中操作数组</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            arr1:[1,2,3]
+        }
+    });
+
+    vm.arr1.push(4);
+    console.log(vm.arr1);
+    console.log(vm.arr1.length);
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reboot</title>
+</head>
+<body>
+    <div>
+        <form method='post' action='http://127.0.0.1:3003/reboot'>
+            命令：<input type="text" name='reboot' />
+            <input type='submit' value='提交'/>
+            
+        </form>
+    </div>
+    <script>
+        window.onload = function(){
+            var lang = document.getElementById('lang');
+
+            var selectId = lang.selectedIndex;
+            var selectValue = lang.options[selectId].value;
+            console.log(selectValue);
+
+
+
+            lang.addEventListener('change',function(){
+                console.log(this);
+            });
+
+
+        }
+    </script>
+</body>
+</html>

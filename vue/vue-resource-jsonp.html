@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src='./lib/vue-resource.min.js'></script>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>{{message}}</h1>
+        <div>
+            <table border=1>
+                <tr>
+                    <th>name</th>
+                    <th>pwd</th>
+                </tr>
+                <tr v-for="info in infos">
+                    <td>{{info.name}}</td>
+                    <td>{{info.pwd}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: "#div1",
+    data: {
+        message: "hello world!",
+        infos:[]
+        
+    },
+    ready: function() {
+        this.getData();
+    },
+    methods:{
+        getData: function() {
+            var vm = this;
+            vm.$http.jsonp('http://127.0.0.1:3000/jsonp').then((res) => {
+                // console.log(res.data);
+                vm.infos = res.data;
+            }, (res) => {
+                console.log('fail');
+            });
+
+        }
+    }
+
+});
+
+
+vm.getData();
+
+</script>
+
+</html>

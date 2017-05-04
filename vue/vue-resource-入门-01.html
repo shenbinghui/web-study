@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue resource 入门</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src='./lib/vue-resource.min.js'></script>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>{{message}}</h1>
+        <div>
+            <table border=1>
+                <tr>
+                    <th>用户名</th>
+                    <th>密码</th>
+                </tr>
+                <tr v-for="info in infos">
+                    <td>{{info.name}}</td>
+                    <td>{{info.pwd}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: "#div1",
+    data: {
+        message: "hello world!",
+        infos:[]
+    },
+
+    methods:{
+        getData: function() {
+            var vm = this;
+            vm.$http.get('http://127.0.0.1:3000/login').then((res) => {
+                vm.infos = res.body;
+            }, (res) => {
+                console.log('fail');
+            });
+
+        }
+    }
+
+});
+
+
+vm.getData();
+
+
+</script>
+
+</html>

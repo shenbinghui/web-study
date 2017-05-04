@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue computed</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <div>计算属性computed</div>
+        {{c}}
+        
+        <input type='text' v-model='data'>
+        <h2>{{inputData}}</h2>
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            x1:12,
+            x2:2,
+            data:''
+        },
+        computed:{
+            c:function(){
+                return this.x1+this.x2
+            },
+            inputData:function(){
+                if(this.data == ''){
+                    return 'EMPTY';
+                }else{
+                    return this.data
+                }
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 入门一下</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message"/>
+        <input type="button" value="test" v-on:click="alert(1);"/>
+    </div>
+
+</body>
+
+<script>
+    var vm = new Vue({
+        el:"#div1",
+        data:{
+            message:"hello world!"
+        }
+    });
+</script>       
+</html>
+
+
+
+

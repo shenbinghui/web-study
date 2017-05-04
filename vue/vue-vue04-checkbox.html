@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue checkbox</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <div>本段只要学习checkbox在vue中的使用</div>
+        <div>{{toggle}}</div>
+        <input type="checkbox" id='music' v-model='toggle' v-bind:true-value='a' v-bind:false-value='b'><label for='music'>音乐</label>
+        <input type="checkbox" id='paint' ><label for='paint'>美术</label>
+        
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            toggle:true,
+            a:'aa',
+            b:'bb'
+        }
+    });
+</script>
+</html>

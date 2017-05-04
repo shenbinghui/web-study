@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>音频播放器</title>
+	<script type='text/javascript' src='./js/jquery.min.js'></script>
+</head>
+<script type="text/javascript">
+	$(function(){
+        var play = $("#play");
+        var text = $('input').val();
+        alert(text);
+	});
+</script>
+
+<body>
+	<div>
+		<audio id='play' controls="controls" autoplay="autoplay"  style='width:1400px;height:200px;background: #eee'>
+		    <source src="./song/2.mp3" type="audio/mpeg">
+			您的浏览器不支持 audio 标签。
+		</audio>
+
+		<input type="text" value='111'>
+	</div>
+</body>
+</html>
