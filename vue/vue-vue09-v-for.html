@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue v-for</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <table border=1>
+            <tr>
+                <td>编号</td>
+                <td>单位</td>
+                <td>电话</td>
+            </tr>
+            <tr v-for="(item ,index) in department2">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+            </tr>
+        </table>
+        <table border=1>
+            <tr>
+                <td>编号</td>
+                <td>单位</td>
+                <td>电话</td>
+            </tr>
+            <tr v-for="(item,index) in department">
+                <td>{{index+1}}</td>
+                <td>{{item[0]}}</td>
+                <td>{{item[1]}}</td>
+            </tr>
+        </table>
+        <ul>
+            <li v-for='n in 5'>{{n}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        department: [
+            ['匪警', 110],
+            ['火警', 119],
+            ['急救', 120]
+        ],
+        department2: [{
+            name: 'a',
+            age: '1'
+        }, {
+            name: 'b',
+            age: '1'
+        }, {
+            name: 'c',
+            age: '1'
+        }],
+    }
+});
+</script>
+
+</html>

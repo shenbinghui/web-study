@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue 自定义组件</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <v-header></v-header>
+        <Hello  message='我只是一个消息' style1='color:red;margin-top:50px'></Hello>
+        
+        
+    </div>
+</body>
+<script>
+Vue.component('Hello',{
+    props:['message','style1'],
+    template:'<div><h1 v-bind:style="style1">hello world1</h1>{{message}}</div>'
+});
+var vm = new Vue({
+    el: '#app',
+    data: {
+        
+    },
+    components:{
+        'v-header':{
+            template:'<div style="position:fixed;top:0;left:0;height:40px;width:100%;background:#eee">我是头部区域</div>'
+        }
+    }
+
+});
+</script>
+
+</html>

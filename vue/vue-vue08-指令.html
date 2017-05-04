@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue 常用指令大合集</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+    <style>
+    h5 {
+        color: blue;
+    }
+
+    .pic{color:red;}
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div>学习VUE的常用属性</div>
+        <div>
+            <h5>1、v-text文本</h5>
+            <p v-text='text'></p>
+        </div>
+        <div>
+            <h5>2、v-html</h5>
+            <p v-html='html'></p>
+        </div>
+        <div>
+            <h5>3、v-bind:class</h5>
+            <p v-bind:class='{pic:pic}'>aa</p>
+        </div>
+        <div>
+            <h5>4、v-bind:id(动态)</h5>
+            <p v-bind:id="'content'+id"></p>
+        </div>
+        <div>
+            <h5>5、v-if v-else</h5>
+            <p v-if='seen'>part 1</p>
+            <p v-else>part 2</p>
+        </div>
+        <div>
+            <h5>6、v-bind:href</h5>
+            <a href="https://www.baidu.com" target="blank">百度</a>
+            <a v-bind:href='baidu' target="blank">百度</a>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        text: '<strong>我是text文本</strong>',
+        html: '<strong>我是html</strong>',
+        id:1,
+        pic:true,
+        seen:true,
+        baidu:"https://www.baidu.com"
+
+    }
+});
+</script>
+
+</html>

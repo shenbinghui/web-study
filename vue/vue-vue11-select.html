@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue select</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <div>
+            <h5>radio 二选一(vue版本)</h5>
+            <input type="radio" id="boy" value="boy" v-model="picked">
+            <label for="boy">男</label>
+            <br>
+            <input type="radio" id="girl" value="girl" v-model="picked">
+            <label for="girl">女</label>
+            <br> {{picked}}
+        </div>
+        <div>
+            <h5>radio 二选一(传统)</h5>
+            <input type="radio" id="good" value="good" name='status'>
+            <label for="good">good</label>
+            <br>
+            <input type="radio" id="bad" value="bad" checked name='status'>
+            <label for="bad">bad</label>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        picked: 'boy'
+    }
+});
+</script>
+
+</html>
