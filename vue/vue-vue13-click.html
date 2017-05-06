@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue click</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <p>vue的点击事件</p>
+        <button @click='greet'>点击</button>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        name: 'vue'
+    },
+    methods:{
+        greet(event){
+            console.log('hello '+this.name);    //hello vue
+            console.log(event.target.tagName);  //BUTTON
+        }
+    }
+});
+</script>
+
+</html>

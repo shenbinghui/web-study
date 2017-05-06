@@ -35,7 +35,10 @@
             </tr>
         </table>
         <ul>
-            <li v-for='n in 5'>{{n}}</li>
+            <li v-for="(v , k ) in news">
+                <span>{{v.title}}</span>
+                <button @click="removeNew(k)">X</button>
+            </li>
         </ul>
     </div>
 </body>
@@ -58,6 +61,19 @@ var vm = new Vue({
             name: 'c',
             age: '1'
         }],
+        news:[
+            {title:'第一条新闻'},
+            {title:'第二条新闻'},
+            {title:'第三条新闻'},
+            {title:'第四条新闻'},
+            {title:'第五条新闻'}
+        ]
+    },
+    methods:{
+        removeNew(item){
+            //alert(item);
+            this.news.splice(item,1);
+        }
     }
 });
 </script>
