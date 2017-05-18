@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组Array</title>
+</head>
+<script type="text/javascript">
+	//sort and reverse
+	console.log('------sort and reverse--------');
+    var arr1 = [1,3,5,7,2,4,8,0];
+    var arr2 = [11,3,5,7,2,4,8,0];
+    var arr3 = [11,3,5,17,22,4,8,0];
+    console.log(arr1.sort()); //结果：[0, 1, 2, 3, 4, 5, 7, 8] 排序，默认从小到大
+    console.log(arr2.sort()); //结果：[0, 11, 2, 3, 4, 5, 7, 8] 但是，比较的是第一位，这样就有问题
+    console.log(arr3.sort(function(a,b){
+    	return a-b; //结果：[0, 3, 4, 5, 8, 11, 17, 22]   从小到大
+    	//return b-a; //从大到小
+    }));
+
+    console.log(arr1.reverse()); //[8, 7, 5, 4, 3, 2, 1, 0]
+
+    //pop and push (在数组尾部操作)
+    console.log('------pop and push--------');
+    var arr4 = [1];
+    console.log(arr4.push(4)); //2
+    console.log(arr4.push(5)); //3
+    console.log(arr4);  //[1, 4, 5]
+    console.log(arr4.pop());  //5
+    console.log(arr4);//[1, 4]
+
+    //shift and unshift(在数组前面操作)
+    console.log('------shift and unshift--------');
+    var arr5 = [1];
+    console.log(arr5.unshift(7)); //2
+    console.log(arr5.unshift(8)); //3
+    console.log(arr5);  //[8, 7, 1]
+    console.log(arr5.shift());  //8
+    console.log(arr5);//[7, 1]
+
+    //slice,数组截取
+    console.log('------slice--------');
+    var arr6 = [1,3,5,2,4,6,7,9,8,0];
+    console.log(arr6.slice(3));//[2, 4, 6, 7, 9, 8, 0] 从第三个位置开始截取到最后
+    console.log(arr6.slice(3,6)); //[2,4,6]  从第三个位置开始到，第六个位置结束
+    console.log(arr6);
+
+    //concat
+    console.log('------concat--------');
+    var arr7 = [1,2,3];
+    var arr8 = [5,8,7];
+    console.log(arr7.concat(arr8)); //[1, 2, 3, 5, 8, 7]
+    console.log(arr7);  // [1, 2, 3]
+    console.log(arr8);  // [5, 8, 7]
+
+    //join数组元素字符串化,结果是字符串 
+    console.log('------join--------');
+    var arr9 = [1,4,5,6,3,8,9,0,1,2];
+    console.log(arr9.join('-')); //1-4-5-6-3-8-9-0-1-2
+    console.log(arr9.join('&')); //1&4&5&6&3&8&9&0&1&2
+
+</script>
+<body>
+	
+</body>
+</html>
