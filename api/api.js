@@ -107,7 +107,7 @@ module.exports = function(req, res) {
 
 
     } else {
-        res.write('<h1>hello</h1>');
+        res.write('<h1>nat port!</h1>');
         res.end();
     }
 

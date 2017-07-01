@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<script>
+	function funcA() {
+	    this.show = function() {
+	        console.log("hello");
+	    }
+	}
+
+	funcA.prototype.aaa = 'aaa';
+
+	function funcB() {
+
+	}
+	funcB.prototype = new funcA();
+	var b = new funcB();
+	console.log(b);
+	//b.show();
+</script>
+<body>
+	原型继承就是B继承A的东东，本质就是B的protoype = new A的对象。即把A的东东挂到B的原型链上，只是简单的挂上去而已。
+</body>
+</html>

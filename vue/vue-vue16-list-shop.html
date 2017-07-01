@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>aa</div>
+        <ul>
+            <li>
+                <p><input type="checkbox" v-model="selectAll">全选</p>
+                <dl v-for="v in list">
+                    <dt>
+                        <input type="checkbox" :value="v.id" v-model="selected">{{v.name}}</dt>
+                    <dd v-for="n in v.sort">
+                        <input type="checkbox" :value="n.id">{{n.name}}</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        list: [{
+            'id': 1,
+            'name': '家具',
+            'sort': [{
+                'id': 11,
+                'name': '沙发'
+            }, {
+                'id': 12,
+                'name': '凳子'
+            }, {
+                'id': 13,
+                'name': '桌子'
+            }]
+        }, {
+            'id': 2,
+            'name': '家电',
+            'sort': [{
+                'id': 21,
+                'name': '冰箱'
+            }, {
+                'id': 22,
+                'name': '电视'
+            }, {
+                'id': 23,
+                'name': '风扇'
+            }]
+        }, {
+            'id': 3,
+            'name': '衣物',
+            'sort': [{
+                'id': 31,
+                'name': '裤子'
+            }, {
+                'id': 32,
+                'name': '衬衫'
+            }, {
+                'id': 33,
+                'name': '鞋子'
+            }]
+        }],
+        selected: []
+    },
+    computed: {
+        selectAll: {
+            get: function() {
+                // alert('get');
+                return this.list ? this.selected.length == this.list.length : false
+            },
+            set: function(value) {
+                // alert('set');
+                let selected = []
+                if (value) {
+                    for (let i = 0; i < this.list.length; i++) {
+                        selected.push(this.list[i].id)
+                    }
+                    this.selected = selected
+                }
+            }
+        }
+    },
+    created() {
+        // alert('created');
+        for (let i = 0; i < this.list.length; i++) {
+            this.selected.push(this.list[i].id)
+        }
+    }
+});
+</script>
+
+</html>
