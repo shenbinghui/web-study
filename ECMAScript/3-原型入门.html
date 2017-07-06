@@ -19,18 +19,20 @@
    //alert(obj1.shenbh); //弹出结果“shenbh”  这个地方告诉我们，obj1一定会顺着原型链找到shenbh（除非没有）
     
 
-    function Boss() {
+  function Boss() {
 		this.a='aa';
 	}
-	Boss.prototype = {
-	    age: 10,
-	    address: ['aa', 'bb']
-	}
+	// Boss.prototype = {
+	//     age: 10,
+	//     address: ['aa', 'bb']
+	// }
     
-    console.log(new Boss());
-	// Boss.prototype.age=10;
-	// Boss.prototype.address=['aa','bb'];
-
+    
+	Boss.prototype.age=10;
+	Boss.prototype.address=['aa','bb'];
+  console.log(new Boss());
+  var boss = new Boss();
+  console.log(boss.hasOwnProperty("a")); //true 实例属性
 
 	function Person() {
 

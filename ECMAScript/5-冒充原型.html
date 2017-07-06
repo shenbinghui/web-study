@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function A(){
+		this.a='aa';
+		this.show = function(){
+			console.log(this.a);
+		}
+	}
+
+	var bb = A;
+	console.log(bb);
+
+	function funcA(age){
+	    this.name="xiaoxiao";
+	    this.age=age;
+	    this.show=function(){
+	        console.log(this.name+','+this.age);
+
+	    }
+	}
+	function funcB(){
+	    this.parent=funcA;
+	    this.parent(40);
+	    delete this.parent;
+
+	}
+	var b=new funcB();
+	console.log(b);
+	// b.show();
+</script>
+<body>
+	
+</body>
+</html>

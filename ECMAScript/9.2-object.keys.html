@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function Person(){
+		this.name = 'test';
+		this.sex = 'man';
+	}
+
+	Person.prototype.age = '20';
+	Person.prototype.address = 'shenzhe';
+
+	var keys1 = Object.keys(new Person());
+	console.log(keys1);   //["name", "sex"]
+	var keys2 = Object.keys(Person.prototype); 
+	console.log(keys2); //["age", "address"]
+</script>
+<body>
+	要取得对象上所有可枚举的实例属性，可以使用ECMAScript 5 的Object.keys()方法。
+	这个方法接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组。
+</body>
+</html>

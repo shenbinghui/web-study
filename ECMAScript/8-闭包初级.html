@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域和闭包</title>
+</head>
+<script>
+    var globalValue = 'GLOBAL'; //全局变量，在函数外
+    function show(){
+    	var localValue = 'LOCAL'; //局部变量，函数内
+    	alert(globalValue);  //函数内可以访问全局变量
+    }
+
+    //console.log(localValue); //函数外无法访问局部变量，此处会报错
+    console.log(window.localValue); //此结果为：undefine
+    console.log(globalValue);
+    console.log(window.globalValue);
+
+    /*
+    闭包三部曲
+    1、定义一个函数
+    2、函数内一个局部变量
+    3、返回返回值为一个函数，并带有这个局部变量
+    */
+	function inc(){
+		var num = 0 ;
+		return function(){
+			return (++num);
+		}
+	}
+ 
+    var add = inc(); //获取一个函数的引用（指针）
+
+    var i=0;
+    while(i<5){
+        console.log(add()); //num的状态一直保存，不会被回收
+        i++;
+    }
+
+</script>
+<body>
+	<p>js分全局变量和局部变量</p>
+</body>
+</html>

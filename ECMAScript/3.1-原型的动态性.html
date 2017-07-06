@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function Person(){
+		this.name = 'shenbh';
+	}
+
+	Person.prototype.showTime = function(){
+		console.log(new Date());
+	}
+
+	var p1 = new Person();
+	p1.showTime();
+
+   
+   function Apple(){
+   	  this.color='red';
+   	  this.eat = function(){
+   	  	console.log('i like eat '+ this.color +' apple');
+   	  }
+   }
+
+   var apple = new Apple();
+
+   Apple.prototype = {      //这里把Apple的原型改成了另外一个对象，切断了构造函数与原型之间的关系
+   	   appleSpace:function(){
+   	   	console.log('big fat apple!!');
+   	   }
+   }
+
+   var apple1 = new Apple();
+   apple.eat();
+
+   console.log(apple1);
+   apple1.appleSpace(); 
+   apple.appleSpace();  //报错
+   //apple1.__proto__.appleSpace();
+
+
+
+</script>
+<body>
+	
+</body>
+</html>
