@@ -115,7 +115,10 @@ window.onload = function() {
     input2.addEventListener('click',function(e){
         alert('input2 click1');
         //此处在input上阻止冒泡，也就是不会网最外层触发事件了
-        e.stopPropagation();
+        if(e && e.stopPropagation)
+            e.stopPropagation();
+        else
+            window.event.cancelBubble = true;
     },false);
     /*---  end 阻止事件冒泡---*/
 

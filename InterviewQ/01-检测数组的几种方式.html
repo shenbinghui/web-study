@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测数组的几种方式</title>
+</head>
+<script>
+    var arr = [1,2];
+	console.log(Array.isArray([]));
+	console.log(toString.call([]).slice(8,-1));
+	console.log(arr.__proto__.constructor);
+	// console.log(instanceof Array);
+</script>
+<body>
+	<p>1.Array.isArray(); es5</p>
+	<p>2.toString.call([]);//”[object Array]”</p>
+	<p>3.var arr=[];</p>
+	<p>arr.constructor;//Array</p>
+	<p>4.instanceof Array</p>
+</body>
+</html>

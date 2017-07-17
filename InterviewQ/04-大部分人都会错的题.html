@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	for(var i=0;i<5;i++){
+        setTimeout(function(){
+        	console.log('in :'+new Date() + i);
+        },1000);
+	}
+
+	console.log('out:'+new Date() + i);
+
+    //方法一
+	for(var i=0;i<5;i++){
+		(function(i){
+	        setTimeout(function(){
+	        	console.log('way1='+ i);
+	        },1000);
+        })(i);
+	}
+
+	//方法二
+	function output(v){
+        setTimeout(function(){
+	    	console.log('way2='+v);
+	    },1000);
+	}
+
+	for(var j=0;j<5;j++){
+        output(j);
+	}
+
+	//方法三
+	for(let k=0;k<5;k++){
+        setTimeout(function(){
+        	console.log('way3=' + k);
+        },1000);
+	}
+
+	//
+	var tasks = [];
+	var outputSync = (x) =>new Promise((resolve)=>{
+		setTimeout(()=>{
+            console.log('1sync='+x);
+		},1000*x);
+	});
+
+    for(var h=0;h<5;h++){
+        tasks.push(outputSync(h));
+    }
+
+    // Promise.all(tasks).then(()=>{
+    // 	setTimeout(()=>{
+    // 		console.log('2sync='+i);
+    // 	},1000);
+    // });
+
+ //    const sleep = (timeountMS) => new Promise((resolve) => {
+	//     setTimeout(resolve, timeountMS);
+	// });
+	 
+	//  // 声明即执行的 async 函数表达式
+	// (async = () => { 
+	//     for(var i = 0; i < 5; i++){
+	//       await sleep(1000);
+	//       console.log("async="+i);
+	//     }
+	//     await sleep(1000);
+	//     console.log("async="+i);
+	// })();
+
+</script>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$.each用法</title>
+	<script src='../lib/jquery.min.js'></script>
+	<script>
+		$(document).ready(function(){
+            //1、遍历数组
+            var data = [100,101,102,103];
+            //传统的用for循环得到，此处用$.each获取
+            $.each(data,function(key,value){
+                console.log(key+":"+value);
+            });
+
+		});
+	</script>
+</head>
+<body>
+	<ul>
+		<li>首页</li>
+		<li>新闻</li>
+		<li>体育</li>
+		<li>娱乐</li>
+		<li>电视</li>
+		<li>直播</li>
+	</ul>
+</body>
+</html>

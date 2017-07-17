@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src='../lib/jquery.min.js'></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src='../lib/jquery.min.js'></script>
 </head>
 <script>
-	$(document).ready(function(){
-		alert(1);
-		// $.ajax({
-		// 	async:false,
-		// 	url:'http://www.w3school.com.cn/jquery/ajax_ajax.asp',
-		// 	method:'get',
-		// 	success:function(ret){
-  //               console.log(ret);
-		// 	}
-		// });
-	});
+$(document).ready(function() {
+    (function($) {
+        $.fn.extend({
+        	show:function(){
+        		$(this).click(function(){
+        			alert($(this).val());
+        		});
+        	}
+        });
+
+        $.fn.hilight = function(options){
+            var defaults = {
+            	foreground:'red',
+            	background:'yellow'
+            };
+
+            var opts = $.extend(defaults,options);
+            
+            $(this).css('background-color',opts.foreground);
+            $(this).css('color',opts.background);
+        }
+
+    })(jQuery);
+    
+    $("#btn1").show();
+    $('#div1').hilight({foreground:'blue'});
+});
 </script>
+
 <body>
-	
 </body>
+    <input id='btn1' type='button' value='按钮' />
+    <div id='div1'>hello world!</div>
+
 </html>

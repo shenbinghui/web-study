@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../lib/jquery.min.js'></script>
+    <style>
+        .evenRow{
+            background: #00ee99;
+        }
+
+        .oddRow{
+            background: #889900;
+        }
+
+        .activeRow{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+            (function($){
+            $.fn.tableUI = function(options){
+                var defaults = {
+                    evenRowClass:'evenRow',
+                    oddRowClass:'oddRow',
+                    activeRowClass:'activeRow'
+                };
+
+                var opts = $.extend(defaults,options);
+                //console.log(opts);
+                this.each(function(){
+                    var thisTable = $(this);
+                    //添加奇偶行颜色 
+                    $(thisTable).find('tr:even').addClass(opts.evenRowClass);
+                    $(thisTable).find('tr:odd').addClass(opts.oddRowClass);
+
+                    //添加活动颜色
+                    $(thisTable).find('tr').bind('mouseover',function(){
+                        $(this).addClass(opts.activeRowClass);
+                    });
+
+                    $(thisTable).find('tr').bind('mouseout',function(){
+                        $(this).removeClass(opts.oddRowClass);
+                    });
+                });
+            }
+
+        })(jQuery);
+
+            $('#mytable').tableUI();
+		});
+	</script>
+
+    <table border='1' id='mytable'>
+        <tr>
+            <td>编号</td><td>类别</td>
+        </tr>
+        <tr>
+            <td>1</td><td>a</td>
+        </tr>
+        <tr>
+            <td>2</td><td>b</td>
+        </tr>
+        <tr>
+            <td>3</td><td>c</td>
+        </tr>
+        <tr>
+            <td>4</td><td>d</td>
+        </tr>
+    </table>
+</body>
+</html>
