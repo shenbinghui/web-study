@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>linear-gradient</title>
+	<style>
+		div{
+			width:300px;
+			height:20px;
+			border:1px solid red;
+		}
+		.div1{
+			background: linear-gradient(90deg,#ff0933 30%,#839022); /*角度设置，起点色占30%，然后以起点色往终点色过度*/
+		}
+
+		.div2{
+			background:linear-gradient(top,red,blue 30%);
+			background:-webkit-linear-gradient(left,red,blue 30%);/*终点色蓝色占30%，往起点色红色过度*/
+		}
+		.div3{
+			background:linear-gradient(left,red,blue);
+			background:-webkit-linear-gradient(left,red,blue); /*无占比，默认各占一半*/
+		}
+		.div4{
+			background: linear-gradient(left,red 50%,blue 40%);
+			background: -webkit-linear-gradient(left,red 10%,blue 10%);/*只要两者均有占比，则无过度，并且按照起点占比整个颜色，和终点占比无关（随便什么值）*/
+		}
+		.div5{
+			background:-webkit-linear-gradient(left,red 10px,blue 1px);/*同div4,这里占比变成了像素*/
+		}
+
+		.div6{
+			background:-webkit-linear-gradient(left, red 30%, green 10%, blue 10%, black 10%);
+			background:-o-linear-gradient(left, red 30%, green 10%, blue 10%, black 10%);
+			background:linear-gradient(to right, red 30%, green , blue , black );/*四种颜色渐变过渡*/
+		}
+		.div7{
+
+		}
+
+	</style>
+</head>
+<body>
+	<div class='div1'></div>
+	<div class='div2'></div>
+	<div class='div3'></div>
+	<div class='div4'></div>
+	<div class='div5'></div>
+	<div class='div6'></div>
+	<div class='div7'></div>
+	<p>线性渐变linear-gradient：起点位置,起点颜色（占比，像素）,终点颜色（占比，像素）</p>
+</body>
+</html>

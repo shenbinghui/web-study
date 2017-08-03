@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3 动画效果</title>
+	<style>
+		div{
+			background: red;
+			width:30px;
+			height:30px;
+			margin:1px;
+		}
+        /*只是改变颜色*/
+		@keyframes turncolor{
+			from{background: yellow}
+			to{background: blue}
+		}
+        /*通过百分比改变颜色*/
+		@keyframes turncolorpercent{
+			0%{background: red}
+			25%{background: yellow}
+			50%{background: blue}
+			75%{background:black;}
+			100%{background: green}
+		}
+        /*改变颜色和位置*/
+        @-webkit-keyframes turncolorposition{
+        	0%{background:blue;left:0px;top:0px;}
+        	20%{background:green;left:200px;top:0px;}
+        	50% {background:blue; left:200px; top:200px;}
+        	75%{background:black;left:0;top:200px;}
+        	100%{background:yellow;left:0px;top:0px;}
+        }
+		.ani1{
+			animation:turncolor 3s;
+		}
+		.ani2{
+			animation:turncolorpercent 6s;
+		}
+		/*当使用动画移位的时候（top,left），要使用position属性改变元素的状态*/
+		.ani3{
+			position:relative;
+			-webkit-animation:turncolorposition 5s;
+		}
+	</style>
+</head>
+<body>
+    <div class='ani1'></div>
+    <div class='ani2'></div>
+    <div class='ani3'></div>
+	<p>	
+	第一步：通过@keyframes xxx 自定义动画(from  to  <==> 0 100%),可以看出用百分比更灵活
+	第二步：通过animation 调用xxx
+	</p>
+</body>
+</html>

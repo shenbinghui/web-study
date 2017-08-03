@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+var _d = new Date,
+    _count = 0,
+    f, timer;
+timer = setInterval(f = function() {
+    if (new Date - _d > 1000)
+        clearInterval(timer), console.log(_count);
+    _count++;
+}, 0);
+
+// var d = new Date, count = 0;
+// while(true) {
+//     if(new Date - d > 1000) {
+//         console.log(count);
+//         break;
+//     }
+//     count++;
+// }
+
+</script>
+
+<body>
+</body>
+
+</html>

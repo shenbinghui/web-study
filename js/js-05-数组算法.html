@@ -40,6 +40,14 @@
 	//console.log(str1.indexOf('2')); //1
     //console.log(str1.indexOf('o')); //4
 
+    var arr4 = [1,2,3,4,5,6];
+    var args1 = Array.prototype.slice.call(arr4);
+    var args2 = arr4.slice();
+    console.log(Object.prototype.toString.call(args1));
+    console.log(Object.prototype.toString.call(args2));
+    console.log('args1='+args1);
+    console.log('args2='+args2);
+
 	
 </script>
 <body>

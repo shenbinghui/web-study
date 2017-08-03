@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短路表达式</title>
+</head>
+<script>
+	var a = null;
+	var b = 1;
+	var c = 2;
+	console.log(a || b); //1
+	console.log(b || a); //1
+	console.log(a && b); //null
+	console.log(b && a); //null
+	console.log(b && c); //2
+	console.log(c && b); //1
+
+	console.log( a && b && c); //null  ( a && (b && c) )
+	console.log( b && b && c); //2
+	console.log( a || b || c); //1
+	console.log( c || b || c); //2
+</script>
+<body>
+	
+</body>
+</html>

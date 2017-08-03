@@ -11,6 +11,14 @@
 	setTimeout(function(){
 		console.log('hello world');
 	},5000);
+    
+    //获取类型函数
+	function getType(data){
+		return Object.prototype.toString.call(data).slice(8,-1).toLowerCase();
+	}
+
+    //console.log(getType([]));
+	//console.log(typeof myEach);//function
 
     //这个地方只是一个函数传入两个参数，第二个是一个函数
 	function myEach(data,callback){
@@ -19,12 +27,19 @@
             for(var i=0;i<data.length;i++){
             	if((typeof callback) === 'function'){
             		callback(i,data[i]);
+            		return 1;
             	}
             }
 		}
 	}
 
+	var arr = ['mifi','ufi','dongle'];
+	var rs = myEach(arr,function(key,value){
+        console.log(key+"="+value);//
+	});
+	console.log('rs='+rs); //1
 
+    //jQuery 插件写法
     ;(function($){
         $.fn.getLiValue = function(callback){
         	//console.log(this);
@@ -35,26 +50,6 @@
         };
     })(jQuery);
 
-
-	function getLiValue2(callback){
-		// var length = this.length;
-		// alert(length);
-		// for(var i = 0;i<this.length;i++){
-  //           callback;
-		// }
-	}
-
-	function getType(data){
-		return Object.prototype.toString.call(data).slice(8,-1).toLowerCase();
-	}
-
-	//console.log(getType([]));
-	//console.log(typeof myEach);//function
-	var arr = ['mifi','ufi','dongle'];
-	myEach(arr,function(key,value){
-        console.log(key+"="+value);
-	});
-
 	window.onload = function(){
 		document.getElementById('btn1').onclick = function(){
             console.log(this);
@@ -64,6 +59,35 @@
 
 	    }
 	}
+
+    //模拟一个add函数，参数是一个函数，返回值是这个回掉函数的返回值
+	function add(callback){
+		return callback(1,3);
+	}
+    
+    //var a=1,b=2;
+	var c1 = add(function(a,b){
+		return a+b;
+	})
+
+	console.log('c1='+c1);
+
+	Array.prototype.add2 = function(callback){
+        var _this = this;
+        var len = _this.length;
+        var rs = 0;
+        for(var i=0;i<len;i++){
+            rs += _this[i];
+        }
+        return callback(rs);
+	}
+
+	var n = [1,2,3,4,5];
+	var rs3= n.add2(function(tt){
+        return tt;
+	});
+	console.log(rs3);
+
 
 	
 </script>

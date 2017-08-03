@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<style>
+	#chart div {
+	  display: inline-block;
+	  background: #4285F4;
+	  width: 20px;
+	  margin-right: 3px;
+	}
+	</style>
+</head>
+<script>
+    window.onload = function(){
+    	d3.select('#chart')
+  		.selectAll("div")
+  		.data([4, 8, 15, 16, 23, 42])
+  		.enter()
+  		.append("div")
+  		.style("height", (d)=> d + "px")
+    }
+	
+</script>
+<body>
+	<div id="chart"></div>
+</body>
+</html>

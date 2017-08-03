@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+function getDataPromise(url) {
+    var promise = new Promise(function(resolve, reject) {
+        var req = new XMLHttpRequest();
+        var rs ; 
+        //console.log(req);
+        req.onreadystatechange = function cb () {
+             // 注意这里
+             if(req.readyState  == 4){
+            	resolve(req.responseText);
+             }
+ 
+             // if(req.status == 200){
+             // 	resolve(req.responseText);
+             // }
+        };
+        req.open('GET', url, true);
+        req.send();
+
+        
+    });
+
+    return promise;
+} 
+
+// getDataPromise('http://127.0.0.1:3000/login').then(function (data) {
+//     console.log('then='+ data);
+// });  // 后面还可以串接更多的then
+
+
+
+// function hello(){
+// 	console.log('hello');
+// 	this.show();
+// }
+
+// function P(){
+// 	this.a = 1233;
+
+// 	this.show = function(){
+// 		console.log(this.a);
+// 	}
+// }
+
+// var p = new P();
+// p.c = hello;
+// p.c();
+
+var promise = new Promise((resolve,reject)=>{
+  resolve(111);
+});
+
+promise.then(value =>{
+  console.log(value);
+  throw new Error("error!!!");
+  return 2;
+})
+.then(value => {
+  console.log(value);
+}).catch(value=>console.log(value));
+
+
+</script>
+<body>
+	
+</body>
+</html>

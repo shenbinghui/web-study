@@ -9,20 +9,13 @@ module.exports = function(req, res) {
     let path = urlPath.pathname;
 
     console.log(urlPath.pathname);
-
-    // res.writeHead(200,{"content-type":"text/paint"});
     res.writeHead(200,{"Access-Control-Allow-Origin": "*"});
 
-    // res.writeHead(200, { "content-type": "text/paint", "Access-Control-Allow-Origin": "*" }); //在响应头中加入允许跨域请求的信息
-
-    
     if (path == '/favicon.ico') {
         res.end();
-
     } 
     // 测试接收表单post请求
     else if (path == '/post') {
-        console.log('/*********start /post**********/');
         var data='';
         req.on('data',function(chunk){
             data+=chunk;
@@ -32,13 +25,7 @@ module.exports = function(req, res) {
             console.log(data);
             res.write('{"status":"success"}');
             res.end();
-            console.log('/*********end /post**********/');
         })
-        // console.log(req);
-        // console.log(req.uname);
-        // console.log(req.upassword)；
-        
-
     } 
     //测试获取login返回一个数据：[json]
     else if (path == '/login') {
@@ -81,8 +68,6 @@ module.exports = function(req, res) {
     //让设备重启
     else if (path == '/reboot') {
         //这里接收post表单数据
-        // console.log(req.method);
-
         var postData = "";
         req.on("data", function(data) {
             postData += data;
@@ -91,9 +76,7 @@ module.exports = function(req, res) {
         req.on("end", function() {
             let query = querystring.parse(postData);
             console.log(query);
-
             exec(query.reboot, (err, stdout, stderr) => {
-
                 if (err || stderr) {
                     res.write('success');
                 } else {
@@ -101,16 +84,9 @@ module.exports = function(req, res) {
                 }
                 res.end();
             });
-
-
         });
-
-
     } else {
         res.write('<h1>nat port!</h1>');
         res.end();
     }
-
-
-
 }

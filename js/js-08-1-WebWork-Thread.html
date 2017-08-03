@@ -1,0 +1,36 @@
+1 <!DOCTYPE html>
+ 2 <html lang="en">
+ 3 
+ 4 <head>
+ 5     <meta charset="UTF-8">
+ 6     <title>JavaScript多线程</title>
+ 7     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+ 8     <script type="text/javascript" src="Concurrent.Thread.js"></script>
+ 9     <style type="text/css">
+10     div {
+11         width: 100px;
+12         height: 100px;
+13         cursor: pointer;
+14         background: orange;
+15     }
+16     </style>
+17 </head>
+18 
+19 <body>
+20     <div id="test">
+21         测试点击
+22     </div>
+23     <script type="text/javascript">
+24     Concurrent.Thread.create(function() {
+25         $('#test').click(function() {
+26             alert(1);
+27         });
+28         /*下面有一段特别复杂的函数*/
+29         for (var i = 0; i < 10000; i++) {
+30             console.log(i);
+31         }
+32     });
+33     </script>
+34 </body>
+35 
+36 </html>

@@ -1,11 +1,13 @@
-const http = require('http');
-
+const http = require('http');//http
 const api = require('./api');
 
-http.createServer((req,res)=>{
+
+let server = http.createServer((req,res)=>{
 
     api(req,res);
 
-}).listen(3000);
+});
+
+server.listen(3000);
 
 console.log('servre listen at 3000 ');

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src='../lib/jquery.min.js'></script>
+</head>
+<script>
+	$(function(){
+		$.ajax({
+            type:'GET',
+            url:"http://127.0.0.1:3000/login",
+            success:function(res){
+                console.log(res);
+            }
+		});
+	});
+</script>
+<body>
+	
+</body>
+</html>
