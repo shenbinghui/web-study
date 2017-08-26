@@ -5,7 +5,8 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 // var config = require('config-lite');
-var config = require('./config/default');
+// var config = require('./config/default');
+var config = require('config-lite')(__dirname);
 var routers = require('./routes');
 var pkg = require('./package');
 //日志
@@ -80,9 +81,17 @@ app.use(expressWinston.errorLogger({
 	]
 }));
 
-app.listen(config.port,function(){
-	console.log(`${pkg.name} listening on port ${config.port}`);
-});
+// app.listen(config.port,function(){
+// 	console.log(`${pkg.name} listening on port ${config.port}`);
+// });
+
+if(module.parent){
+	module.exports = app;
+}else{
+	app.listen(config.port,function(){
+	    console.log(`${pkg.name} listening on port ${config.port}`);
+    });
+}
 
 app.use(function (err, req, res, next) {
   res.render('error', {

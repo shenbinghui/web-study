@@ -1,0 +1,22 @@
+{
+  "name": "node_chat",
+  "version": "1.0.0",
+  "description": "this is a chat by node+express",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "shenbinghui",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
