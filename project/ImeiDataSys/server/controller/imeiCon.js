@@ -56,8 +56,18 @@ router.get('/deleteimei/:id',function(req,res,next){
 	let id = req.params.id;
     ImeiModel.deleteAsync({_id:id}).then(function(rs){
         //console.log(rs);
-        res.json(rs.resault);
+        res.json(rs.result);
     });
+});
+
+//删除多个 post
+router.post('/deleteimei',function(req,res,next){
+    let datas = req.body;
+    console.log(datas);
+    ImeiModel.deleteAsync({_id:{$in:datas}}).then(function(rs){
+        console.log(rs.result);
+        res.json(rs);
+    })
 });
 
 //更新imei信息
@@ -67,7 +77,6 @@ router.get('/updateimei/:imei/:id',function(req,res,next){
     ImeiModel.updateAsync({_id:id},{imei:imei}).then(function(res){
         console.log(res);
     });
-
 });
 
 

@@ -6,12 +6,21 @@
             <el-button type="primary" style='width:8%' @click='addImeiClick'  size='small'>增加</el-button>
             <!-- <el-button type="primary" style='width:10%' @click='importImieClick' >导入</el-button> -->
             <vue-xlsx-table @on-select-file="importImieClick">导入</vue-xlsx-table>
+            <el-button type="primary" style='width:12%' @click='deleteSelectedClick' size='small'>删除选中</el-button>
       </div>
       <div>
         <el-table
+          ref='imeiTable'
           :data="imeiData"
           border
-          style="width: 85%;clear:both">
+          style="width: 85%;clear:both"
+          @selection-change = 'handleSelectionChange'>
+          <el-table-column
+              width='50'
+              type='selection'
+          >
+          
+          </el-table-column>
           <el-table-column
             prop="_id"
             label="编号">
@@ -86,32 +95,44 @@ export default{
       },
       getAllImeiData(){
           this.axios.get(this.rootUrl+'imei/showimei/').then((res) =>{
-            this.imeiData = res.data;
-            this.page.totalCount = this.imeiData.length;
+            this.page.totalCount = res.data.length;
           });
       },
       getDataByPage(){
-        this.axios.post(this.rootUrl+'imei/pageimei',{pageCount:this.page.pageCount,totalPage:this.page.totalPage})
-        .then((rs) =>{
+        this.axios.post(this.rootUrl+'imei/pageimei',
+            {
+              pageCount:this.page.pageCount,
+              totalPage:this.page.totalPage
+            }
+          ).then((rs) =>{
             this.imeiData = rs.data;
-            // resolve({getDataByPage:'ok'});
         });
       },
       updateImeiClick(row) {
           this.updataEnable = !this.updataEnable;
           this.updataBtn = '确定';
           
-          //如果数据没有修改
-          //if(row.imei != )
-          console.log(row.imei);
+          
 
-          //确定更新
+
+          //确定更新数据
           if(!this.updataEnable){
             //this.$message(row._id);
-            this.axios.get(this.rootUrl+'imei//updateimei/'+row.imei+'/'+row._id);
+            this.axios.get(this.rootUrl+'imei/updateimei/'+row.imei+'/'+row._id);
             this.updataBtn = '更新';
             this.$message('更新成功');
-
+            // this.getAllImeiData();
+            this.getDataByPage();
+          }else{
+            //只显示当前要更新的那条数据
+            this.axios.get(this.rootUrl+'imei/findimei/'+row.imei).then((res) =>{
+                if(this.getType(res.data) === 'object'){
+                      //这个地方是个坑，获取的是一个json时，是object,但我的imeiData是数组，没办法，先把这个object转为字符串并添加[],使它成为一个json格式的数组，然后在JSON化
+                      this.imeiData = JSON.parse('['+JSON.stringify(res.data)+']');
+                  }else{
+                      this.imeiData = res.data;
+                  }
+            });
           }
       },
       deleteImeiClick:function(index){
@@ -125,7 +146,6 @@ export default{
       findImeiClick(){
           if(this.imeiNum){
               this.axios.get(this.rootUrl+'imei/findimei/'+this.imeiNum).then((res) =>{
-                //console.log(this.getType(res.data));
                 if(this.getType(res.data) === 'object'){
                     //这个地方是个坑，获取的是一个json时，是object,但我的imeiData是数组，没办法，先把这个object转为字符串并添加[],使它成为一个json格式的数组，然后在JSON化
                     this.imeiData = JSON.parse('['+JSON.stringify(res.data)+']');
@@ -136,7 +156,6 @@ export default{
           }else{
                this.getAllImeiData(); 
                this.getDataByPage();
-               // this.$message('内容不可以为空的！');
           }
       },
       addImeiClick(){
@@ -147,7 +166,7 @@ export default{
           }.bind(this));
       },
       importImieClick(d){
-          //console.log(d);
+          //这里用了xmls插件，注意去学习
           let arr = [];
           for(let i=0;i<d.body.length;i++){
             arr.push({imei:d.body[i].imei});
@@ -156,8 +175,26 @@ export default{
           //arr写入数据库
           this.axios.post(this.rootUrl+'imei/addmanyimei',arr).then(function(rs){
               this.getAllImeiData();
+              this.getDataByPage();
           }.bind(this));
+      },
+      deleteSelectedClick(rows){
+        //清除所有
+        //this.$refs.imeiTable.clearSelection();
+        let datas = [];
+        this.selectImeiData.forEach(function(item){
+          datas.push(item._id)
+        });
+        this.axios.post(this.rootUrl+'imei/deleteimei',datas).then((rs) => {
+              this.getAllImeiData();
+              this.getDataByPage();
+          }).catch((err) =>{
+              console.log(err);
+          });
 
+      },
+      handleSelectionChange(val){
+        this.selectImeiData = val;
       },
       handleSizeChange(pageCount) {
         //获取设置pageCount
@@ -169,11 +206,11 @@ export default{
         this.page.totalPage = (curPage-1)*(this.page.pageCount);
         this.getDataByPage();
       }
-
     },
     data() {
       return {
         imeiData: [],
+        selectImeiData:[],
         imeiNum:'',
         updataEnable:false,
         updataBtn:'更新',
@@ -186,11 +223,10 @@ export default{
       }
     },
     created(){
-        this.getAllImeiData();
         this.getDataByPage();
+        this.getAllImeiData();
     }
   }
-
 </script>
 
 <style scoped>
