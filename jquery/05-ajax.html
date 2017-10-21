@@ -3,20 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ajax</title>
-	<script src='../lib/jquery.min.js'></script>
+	<!-- <script src='../lib/jquery.min.js'></script> -->
+	<script src='../lib/jquery-1.8.2.min.js'></script>
 </head>
 <script>
 	$(function(){
-		$.ajax({
-            type:'GET',
-            url:"http://127.0.0.1:3000/login",
-            success:function(res){
-                console.log(res);
-            }
+		// $.ajax({
+  //           type:'GET',
+  //           url:"http://127.0.0.1:3000/login",
+  //           success:function(res){
+  //               console.log(res);
+  //           }
+		// });
+
+		$('#content').load('http://127.0.0.1:3000/html',function(response,status){
+			console.log(response);
+			console.log(status);
+			getUrl();
 		});
 	});
 </script>
 <body>
-	
+	<div>hi</div>
+	<div id='content'></div>
 </body>
 </html>

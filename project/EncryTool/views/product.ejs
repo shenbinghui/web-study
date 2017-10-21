@@ -1,0 +1,33 @@
+<div class='mr product'>
+	<div id='formdata' class='hide_display'>
+		<form id='imgForm' action="/uploadimg" method='post' enctype="multipart/form-data" onsubmit="return validate()">
+			<div>
+				<label for="productName">产品名称:</label>
+				<input type="text" class='input' name='productName' id='productName'>
+			</div>
+			<div>
+				<label for="mark">备注:</label>
+				<input type="text" class='input' name='mark' id='mark'>
+			</div>
+			<div>
+				<label for="uploading">请选择图片：</label>
+				<input type="file" name='uploadimg' multiple="multiple" id='image1'>
+
+			</div>
+			<div><input type="submit"  class='btn btn-primary btn-sm' value='上传'></div>
+		</form>
+    </div>
+    <div style='margin: 10px 0 10px 0'>
+    	<input id='add' type="button" class='btn btn-primary btn-sm' value='add'>
+    	<input id='hide' type="button" class=' btn btn-primary btn-sm' disabled value='hide'>
+    </div> 
+    
+    <div id='productList'></div>
+    <!-- <div class='list'>
+    	<img src="/upload/upload_072f5200d73c57f796300e3cf13e9020.png" alt="device" style="width:180px;height:120px">
+    	<div><span>型号:</span><strong>LR521</strong></div>
+    	<div><span>说明:</span></div>
+    	<div style='font-size:12px;width:180px'>LR521 9x25平台 4GMifi 支持全频段,速度快，稳定</div>
+    </div> -->
+    
+</div>

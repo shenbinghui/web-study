@@ -5,19 +5,31 @@
 	<title>Document</title>
 </head>
 <script>
-var sleep = function (time) {
-    return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            resolve();
-        }, time);
-    })
-};
+// var sleep = function (time) {
+//     return new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             // resolve('aa');
+//             console.log(time);
+//         }, time);
+//     })
+// };
 
-var start = async function(){
-	await sleep(3000);
+// var start = async function(){
+// 	await sleep(3000);
+// 	await sleep(5000);
+// }
+
+// // start().then((d)=>console.log(d));
+// start();
+
+
+async function f() {
+  return await 123;
 }
 
-start();
+f().then(v => console.log(v))
+
+
 </script>
 <body>
 	

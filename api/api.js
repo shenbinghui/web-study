@@ -85,8 +85,17 @@ module.exports = function(req, res) {
                 res.end();
             });
         });
-    } else {
-        res.write('<h1>nat port!</h1>');
+    } else if(path == '/html'){
+         var fs = require('fs');
+         console.log(123);
+         res.writeHead(200, {'Content-type' : 'text/html',"Access-Control-Allow-Origin": "*"});
+         //nodejs原生的只有输入文件流的方式，text,需要输入html,还得先都文件，再写，可以自己封装。没现成的。express就有现成的可用
+         fs.readFile('./test.html',function (err,data){
+            res.end(data);
+         });
+    }
+    else {
+        res.write('<h1>nat port111!</h1>');
         res.end();
     }
 }
