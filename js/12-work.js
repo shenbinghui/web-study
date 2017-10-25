@@ -10,19 +10,20 @@ onmessage = function (event) {
 
 [1,1,1,2,2,"a","b","a"].filter(function(value,index,arr){
 	//过滤条件false过滤掉，true不过滤
-    var tmp = [];
-	for(var i=0;i<arr.length;i++){
-		if(tmp.indexOf(arr[i]) < 0){
-			return 1;
-		}
-		
-	}
+    return index === arr.indexOf(value)
+	
 });
 
 var arr = [1,3,1,2,2,"a","b","a"];
 
 function alone(arr){
-	
+	var tmp = [];
+	for(var i=0;i<arr.length;i++){
+		if(tmp.indexOf(arr[i]) < 0){
+			tmp.push(arr[i]);
+		}
+		
+	}
 
 	return tmp;
 }

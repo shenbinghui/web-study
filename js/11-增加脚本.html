@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>add script</title>
+</head>
+<body>
+	<script>
+	    var importJs = document.createElement('script');
+	    importJs.setAttribute('type','text/javascript');
+	    importJs.setAttribute('src','https://unpkg.com/flyio/dist/fly.min.js');
+	    document.getElementsByTagName('head')[0].appendChild(importJs);
+
+	    // fly.get('http://www.baidu.com')
+	    // .then(function(res){console.log(res)},function(fail){console.log(fail)})
+	    // .catch(function(error){console.log(err)});
+	</script>
+</body>
+</html>

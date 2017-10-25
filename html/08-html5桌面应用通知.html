@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5桌面应用通知</title>
+</head>
+<script>
+	//查看当前权限
+	console.log(Notification.permission);
+
+	//请求权限
+	Notification.requestPermission().then(function(permission) {
+	    if(permission === 'granted'){
+	    	// Notification.perssion = 'granted';
+	        console.log('用户允许通知');
+	        //推送通知
+		    var n = new Notification('状态更新提醒',{
+			    body: '你的朋友圈有3条新状态，快去查看吧',
+			    tag: 'linxin',
+			    icon: 'http://blog.gdfengshuo.com/images/avatar.jpg',
+			    requireInteraction: true
+			})
+	    }else if(permission === 'denied'){
+	        console.log('用户拒绝通知');
+	    }
+	});
+	
+	// Notification.requestPermission(function (permission) {  
+	// 	console.log(permission);
+	//     if (permission == "granted") {
+	//         var notification = new Notification("您有一条新的消息",{  
+	//             dir: "auto",  
+	//             lang: "zh-CN",  
+	//             tag: "testNotice",  
+	//             icon:'ant.png',  
+	//             body: '你好啊！我是蚂蚁，我在测试桌面推送' 
+	//            });   
+	//     }
+	// });
+</script>
+<body>
+	注意：如果这段代码放在html中执行，一定要创建虚拟服务器，即用域名访问，如：localhost，不能直接用file:index.html 这样的路径访问，因为这个不是http协议，浏览器不接受本地文件的通知设置。
+</body>
+</html>

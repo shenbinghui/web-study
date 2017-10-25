@@ -73,7 +73,6 @@ $(function(){
             $('#productList').html(productlist);
         }
     })
-
 })
 
 
