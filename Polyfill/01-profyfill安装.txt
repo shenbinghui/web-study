@@ -1,0 +1,13 @@
+babel-polyfill用正确的姿势安装之后，引用方式有三种：
+
+1.require("babel-polyfill");
+
+2.import "babel-polyfill";
+
+3.module.exports = {
+
+　　entry: ["babel-polyfill", "./app/js"]
+
+};
+
+注：第三种方法适用于使用webpack构建的同学，加入到webpack配置文件(webpack.config.js)entry项中

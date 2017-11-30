@@ -1,64 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>数据属性</title>
+    <meta charset="UTF-8">
+    <title>数据属性</title>
 </head>
 <script>
-	var shen;
-	Object.defineProperty(window,'shen',{
-		writable: false,
-        value: "Nicholas"
-	});
-    
 
-	console.log(shen);
-	shen = 'bigShen';  //上面已经把可写属性设置为不可改变
-	console.log(shen);
 
-	var name;
-	Object.defineProperty(window, "name", {
-	    configurable: false,
-	    value: "Nicholas"
-	});
-	console.log(name); //"Nicholas"
-	delete name; //不可被删除
-	console.log(name); //"Nicholas
+/****************writable********************/
+Object.defineProperty(window, 'shen', {
+    writable: false,
+    value: "Nicholas"
+});
 
-    var test1 = 'test1';
-    test2 = 'test2';
-    console.log(delete test1);
-    console.log(delete test2);
 
-    var test3;
-    test3 = 'test3';
-    delete test3 ; //这个地方删不掉,说明了window的默认configurable为false
-    console.log(test3);//打印结果为 test3
+console.log(shen);
+shen = 'bigShen'; //上面已经把可写属性设置为不可改变
+console.log(shen); //Nicholas
 
-    var Test4 = {};
-    Test4.test4 = 'test4';
-    delete Test4.test4;  //这个地方可以删掉，印证了configurable的默认值为true
-    console.log(Test4.test4);
 
-    //尝试改变window某个属性的configurable
-    var test5;
-    Object.defineProperty(window,'test5',{
-    	configurable:true,
-    	value:'test5'
-    });
-    console.log(test5);
-    delete test5;
-    //console.log(test5); //这个地方报错，找不到test5属性
+
+/**************configurable**********************/
+Object.defineProperty(window, "name", {
+    configurable: false,  
+    value: "Nicholas"
+});
+
+console.log(name); //"Nicholas"
+delete name; //不可被删除
+console.log(name); //"Nicholas
+
+
+
+/***********var定义的属性无法delete*************************/
+var test3;
+test3 = 'test3';
+delete test3; //这个地方删不掉,说明了window的默认configurable为false
+console.log(test3); //打印结果为 test3
+
+
+
+/***********对象的属性可以delete*************************/
+var Test4 = {};
+Test4.test4 = 'test4';
+delete Test4.test4; //这个地方可以删掉，印证了configurable的默认值为true
+console.log(Test4.test4);
+
+/***********尝试改变window某个属性的configurable*************************/
+Object.defineProperty(window, 'test5', {
+    configurable: true,
+    value: 'test5'
+});
+console.log(test5);
+delete test5;
+//console.log(test5); //这个地方报错，找不到test5属性
+
+
+/**************get set**************/
+Object.defineProperty(window, 'a', {
+    tmp: '',
+    configurable: true,
+    enumerable: true,
+    get: function() {
+        console.log('get');
+        return this.tmp;
+    },
+    set: function(newValue) {
+
+        if (this.tmp == newValue) {
+            console.log('the same');
+        }
+        this.tmp = newValue;
+        console.log(newValue);　　
+    }
+
+})
+
 
 </script>
+
 <body>
-	<p>1、[[Configurable]]：表示能否通过delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为true。</p>
-
+    <p>1、[[Configurable]]：表示能否通过delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为true。</p>
     <p>2、[[Enumerable]]：表示能否通过for-in 循环返回属性。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为true。</p>
-
     <p>3、[[Writable]]：表示能否修改属性的值。像前面例子中那样直接在对象上定义的属性，它们的这个特性默认值为true。</p>
-
     <p>4、[[Value]]：包含这个属性的数据值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。这个特性的默认值为undefined。</p>
-
 </body>
+
 </html>

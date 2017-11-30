@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>overflow属性/word-wrap</title>
+</head>
+<style type=text/css>
+.div1 {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ddd;
+    overflow: auto;
+}
+
+.div2 {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+}
+
+.overflow {
+    background: #777666;
+}
+
+.wordwrap {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ddd;
+    background: #999444;
+    word-wrap: break-word;
+}
+
+.breakword {
+    width: 200px;
+    height: 150px;
+    border: 1px solid #ddd;
+    word-break: break-all;
+}
+</style>
+
+<body>
+    <h5>第一种情况</h5>
+    <div class='div1'>
+        abcdefghijklmnopgadfeekekekekldldlppppwaanan 这部分字符串不会自己换行，overflow处理是否可见之类的，但是不会换行
+    </div>
+    <h5>第二种情况</h5>
+    <div>
+        You must continue to see them no matter how much you may disagree with them 这是正常情况，会自动换行
+    </div>
+    <h5>第三种情况</h5>
+    <div class='div2'>
+        abcdefghijklmnopgadfeekekekekldldlppppwaanan 这部分字符串不会自己换行，overflow处理是否可见之类的，但是不会换行,我想让他换行，可以用word-wrap
+    </div>
+    <h5>第四种情况 breakword  wordwrap区别</h5>
+    <div>
+        <div class='wordwrap'>
+            hello wordddddddddddddddddddddddddddddddddddd
+        </div>
+        <div class='breakword'>
+            hello wordddddddddddddddddddddddddddddddddddd
+        </div>
+    </div>
+    <div class='overflow'>
+        设置长度，但是内容会超出范围长度。。。可以用overflow
+        <p>overflow:</p>
+        <p>scroll:显示滚轮</p>
+        <p>visible 默认值。内容不会被修剪，会呈现在元素框之外。</p>
+        <p>hidden 内容会被修剪，并且其余内容是不可见的。</p>
+        <p>auto 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。</p>
+        <p>inherit 规定应该从父元素继承 overflow 属性的值。</p>
+    </div>
+</body>
+
+</html>
