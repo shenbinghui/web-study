@@ -1,4 +1,10 @@
-babel-polyfill用正确的姿势安装之后，引用方式有三种：
+
+安装：$ npm install --save-dev babel-polyfill
+
+
+babel-polyfill用正确的姿势安装之后，引用方式：
+
+0:<script src="node_modules/babel-polyfill/dist/polyfill.min.js"></script> (浏览器)
 
 1.require("babel-polyfill");
 

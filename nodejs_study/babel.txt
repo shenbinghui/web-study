@@ -1,0 +1,14 @@
+nodejs新特性的语法需要babel支持
+例如async/await 
+1-新建.babelrc
+{
+  "presets": ["stage-3", "es2015"],
+  "plugins": ["transform-runtime"]
+}
+
+
+2-npm i babel-core babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-3 babel-runtime --save安装一堆需要的插件
+
+3-文件中增加
+require("babel-core/register");
+

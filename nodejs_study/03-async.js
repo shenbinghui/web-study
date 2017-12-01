@@ -1,7 +1,8 @@
 var fs = require('fs');
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
+// var async = require('asyncawait/async');
+// var await = require('asyncawait/await');
 
+console.log(1);
 //Promise
 function asyncReadFile(filename){
 	return new Promise((resolve,reject)=>{
@@ -31,12 +32,12 @@ function asyncReadFile(filename){
 // }
 
 //async
-(async (function as(){
+async function as(){
 	var f1 = await asyncReadFile('./package.json');
-	var f2 = await asyncReadFile('./cmd.js');
+	var f2 = await asyncReadFile('./04-cmd.js');
 	console.log(f1.toString());
 	console.log(f2.toString());
-}));
+};
 
 var rs = as();
 console.log(rs);
