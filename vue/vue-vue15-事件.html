@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue event</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app' @click='clickdiv'>
+        <div>
+            <input type="button" value='click' @click.stop='greet' @change='changeD' @mouseover='mouseover1'>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: '#app',
+    data: {
+        name: 'vue'
+    },
+    methods:{
+        greet(e){
+            alert('greet');
+        },
+        changeD(e){
+            alert(e.type);
+        },
+        mouseover1(e){
+            console.log(e.type);
+        },
+        clickdiv(){
+            alert('click div');
+        }
+    }
+});
+</script>
+
+</html>

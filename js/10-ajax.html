@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<script>
+    var xhr;
+	if(window.XMLHttpRequest){
+		xhr = new XMLHttpRequest();
+	}else{
+        xhr = new ActiveXObject('MicrosoftXMLHTTP');
+	}
+
+	xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+        	var data =  JSON.parse(xhr.responseText);
+
+        	document.getElementById('content').innerHTML = data[0].name;
+        }
+	}
+
+	xhr.open('get','http://127.0.0.1:3000/login',true);
+	xhr.send();
+
+</script>
+<body>
+	<div id='content'>
+		
+	</div>
+</body>
+</html>

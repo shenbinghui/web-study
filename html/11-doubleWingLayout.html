@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            width:100%;
+            margin:0;
+            padding:0;
+        }
+        .container{
+            margin-left:150px;
+            margin-right:200px;
+        }
+        .center{
+            width:100%;
+            background-color: orangered;
+            height:200px;
+            float: left;
+        }
+        .left{
+            width:150px;
+            height:180px;
+            float: left;
+            background-color: darkseagreen;
+            margin-left: calc(-100% - 150px);
+        }
+        .right{
+            width:200px;
+            height:190px;
+            float: right;
+            background-color: cornflowerblue;
+            margin-right:-200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="center">左侧内容</div>
+    <div class="left">主体内容</div>
+    <div class="right">右侧内容</div>
+</div>
+</body>
+</html>

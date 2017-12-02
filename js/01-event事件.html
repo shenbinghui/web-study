@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js 事件</title>
+    <style>
+    #div1,
+    #div2 {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bgRed {
+        background: red
+    }
+    
+    .bgBlue {
+        background: blue
+    }
+    </style>
+</head>
+
+<body>
+    <a href='http://www.cnblogs.com/iyangyuan/p/4190773.html'>学习连接</a>
+    <a href='http://www.w3school.com.cn/jsref/dom_obj_event.asp'>w3cschool</a>
+    <div>
+        <p>第一版本，简单的dom事件注册绑定</p>
+        <div id='div1' class='bgRed' style='float:left'>我是div1</div>
+        <div id='div2' class='bgBlue' style='float:left' onclick='clickDiv2()'>我是div2</div>
+    </div>
+    <div style='clear:both'>
+        <p>第二版本，事件监听注册，捕捉，冒泡</p>
+        <p>捕捉：从window到最里层的元素上产生的事件</p>
+        <p>冒泡：从最后一个节点元素到最外层window产生的事件</p>
+        <p style='color:#777;font-size:12px'>例如:</p>
+        <div id='div3' style='border:1px solid red;width:100px;height:50px'>
+            <input type="button" id='input1' value='点击'>
+        </div>
+        <p>阻止冒泡：</p>
+        <div id='div4' style='border:1px solid red;width:100px;height:50px'>
+            <input type="button" id='input2' value='点击'>
+        </div>
+        <p>解除事件：</p>
+        <div id='div5' style='border:1px solid red;width:100px;height:50px'>
+            <input type="button" id='input3' value='点击'>
+        </div>
+    </div>
+</body>
+<script>
+
+function clickDiv2() {
+    alert('div2 is clicked');
+}
+
+
+window.onload = function() {
+    /*+++ 第一版本，简单的dom事件注册绑定 start +++*/
+    var div1 = document.getElementById('div1')
+        //在div上注册一个click事件，最初是这样做的
+    div1.onclick = function() {
+            alert('div1 is clicked!');
+        }
+        //注册鼠标在div上
+    div1['onmouseover'] = function() {
+        //alert(1);
+        div1.className = 'bgBlue';
+
+    }
+
+    //注册鼠标离开div
+    div1['onmouseleave'] = function() {
+        //alert(1);
+        div1.className = 'bgRed';
+    }
+
+    //清除
+    div1.onclick = null;
+    /*---  第一版本，简单的dom事件注册绑定  end---*/
+
+    /*---  start 事件冒泡和捕捉---*/
+    var input1 = document.getElementById('input1');
+    var div3 = document.getElementById('div3');
+
+    //true代表捕获事件，false代表冒泡事件
+
+    //冒泡
+    div3.addEventListener('click',function(){
+        alert('div3 click1');
+    },false);
+
+    input1.addEventListener('click',function(){
+        alert('input1 click1');
+    },false);
+
+    input1.addEventListener('click',function(){
+        alert('input1 click2');
+    },true);
+
+    //捕捉
+    div3.addEventListener('click',function(){
+        alert('div3 click2');
+    },true);
+    /*---  end  事件冒泡和捕捉---*/
+
+
+    /*---  start 阻止事件冒泡---*/
+    var input2 = document.getElementById('input2');
+    var div4 = document.getElementById('div4');
+
+    div4.addEventListener('click',function(e){
+        alert('div4 click1');
+    },false);
+
+    input2.addEventListener('click',function(e){
+        alert('input2 click1');
+        //此处在input上阻止冒泡，也就是不会网最外层触发事件了
+        if(e && e.stopPropagation)
+            e.stopPropagation();
+        else
+            window.event.cancelBubble = true;
+    },false);
+    /*---  end 阻止事件冒泡---*/
+
+
+    /*---  start 解除事件---*/
+    function fn(){
+       alert('fn click');
+    }
+
+    var input3 = document.getElementById('input3');
+    input3.addEventListener('click',fn,false);
+
+    input3.removeEventListener('click',fn,false);
+    /*---  end 解除事件---*/
+}
+</script>
+
+</html>

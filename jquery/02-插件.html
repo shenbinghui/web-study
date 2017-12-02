@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='../lib/jquery.min.js'></script>
+</head>
+<script>
+    //静态插件 
+	(function($, undefine){
+		$.SHEN_LOG =function(value){
+            console.log(value);
+		}
+	})(jQuery);
+
+	$.SHEN_LOG('hahaha');
+
+
+	//扩展对象格式
+	(function($, undefine) {
+    	$.fn.mSelect = function(option) {
+        var _default = {};
+        var opt = $.extend(true, _default, option);
+          this.each(function(index, value) {});//这个是对选择的d对象进行遍历
+    })(jQuery);
+
+</script>
+<body>
+	 <h3>1.静态插件</h3>
+	 <h3>2.扩展对象</h3>
+</body>
+</html>

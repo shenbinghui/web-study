@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function Person(){
+		this.name='shenbh';
+	}
+
+	Person.prototype.age = '20';
+    
+    var p1 = new Person();
+	//console.log(p1.hasOwnProperty('name')); //true   是实例属性
+	//console.log(p1.hasOwnProperty('age'));  //false  是原型属性
+
+	//判断属性是实例还是原型属性
+	function isProperty(object , name){
+		return (object.hasOwnProperty(name)) && ( name in object);
+	}
+
+	console.log(isProperty(p1,"name"));
+	console.log(isProperty(p1,"age"));
+
+    var propertyArr=[];
+	for(p in p1){
+        propertyArr.push(p);
+        //alert(p);
+	}
+	console.log(propertyArr);
+</script>
+<body>
+	<p>1、hasOwnProperty  true：是实例属性</p>
+	<p>2、in</p>
+</body>
+</html>

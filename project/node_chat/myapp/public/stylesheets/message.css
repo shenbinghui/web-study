@@ -1,0 +1,27 @@
+.message-reply,.message-receive{
+	width:100px;
+	border:1px solid red;
+}
+
+.message-reply{
+	float:right;
+    clear:both;
+}
+
+.message-receive{
+	float:left;
+    clear:both;
+}
+
+.message-content{
+	/*word-wrap:break-word;*/
+}
+
+.message-reply .message-content img{
+	width:400px;
+	height:300px;
+}
+
+.message-reply .message-info,.message-reply .user-info img{
+	float:right;
+}

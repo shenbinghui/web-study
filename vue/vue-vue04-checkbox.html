@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue checkbox</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <div>本段只要学习checkbox在vue中的使用</div>
+        <div>{{toggle}}</div>
+        <input type="checkbox" id='music' v-model='toggle' v-bind:true-value='a' v-bind:false-value='b'>
+        <label for='music'>音乐</label>
+        <input type="checkbox" id='paint'>
+        <label for='paint'>美术</label>
+        <div>
+            <h4>checkbox vue版本</h4>
+            <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+            <label for="runoob">Runoob</label>
+            <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+            <label for="google">Google</label>
+            <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+            <label for="taobao">taobao</label>
+            {{checkedNames }}
+        </div>
+        <div>
+            <h4>checkbox 传统版本</h4>
+            <input type="checkbox" id="zq" value="足球" name="hobby" checked>
+            <label for="zq">足球</label>
+            <input type="checkbox" id="lq" value="篮球" name="hobby">
+            <label for="lq">篮球</label>
+            <input type="checkbox" id="ymq" value="羽毛球" name="hobby" checked>
+            <label for="ymq">羽毛球</label>
+            <div id='hobby'></div>
+        </div>
+    </div>
+</body>
+<script>
+//传统方法获取checkbox的值
+window.onload = function() {
+    //document.getElementsByTagName("input");
+    var myHobby = [];
+    var hobby = document.getElementsByName('hobby');
+    for (var i = 0; i < hobby.length; i++) {
+        if (hobby[i].checked) {
+            myHobby.push(hobby[i].value);
+        }
+        //事件绑定
+        hobby[i].addEventListener('click', function() {
+            if (this.checked) {
+                myHobby.push(this.value);
+            } else {
+                for (var j = 0; j < myHobby.length; j++) {
+                    if (this.value == myHobby[j]) {
+                        myHobby.splice(j, 1);
+                    }
+                }
+            }
+            document.getElementById('hobby').innerHTML = myHobby;
+        }, false);
+
+    }
+    document.getElementById('hobby').innerHTML = myHobby;
+
+}
+
+
+
+var vm = new Vue({
+    el: '#app',
+    data: {
+        toggle: true,
+        a: 'aa',
+        b: 'bb',
+        checkedNames: ['Runoob']
+    }
+});
+</script>
+
+</html>

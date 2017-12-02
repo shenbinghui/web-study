@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+
+async function f() {
+  return await 123;
+}
+
+f().then(v => console.log(v))
+
+
+</script>
+<body>
+	<p>async 表示这是一个async函数，await只能用在这个函数里面。</p>
+	<p>await 表示在这里等待promise返回结果了，再继续执行。</p>
+	<p>await 后面跟着的应该是一个promise对象（当然，其他返回值也没关系，只是会立即执行，不过那样就没有意义了…）</p>
+</body>
+</html>

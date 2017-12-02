@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css zoom 和 scale区别</title>
+    <style>
+    .zoom {
+        zoom: 0.5;
+    }
+    
+    .scale {
+        transform: scale(0.5);
+    }
+
+    .win{border:1px solid #000;}
+    </style>
+</head>
+
+<body>
+    <div class='win'>
+        <h3>原图</h3>
+        <img src="../html/img/2.jpg" alt="">
+    </div>
+    <div class='zoom win'>
+        <h3>zoom缩小0.5</h3>
+        <img src="../html/img/2.jpg" alt="">
+    </div>
+    <div class='scale win'>
+        <h3>scale缩小0.5</h3>
+        <img src="../html/img/2.jpg" alt="">
+    </div>
+    <hr>
+    <div>
+        <h3 style="color:red">看了以上两种缩小，稍微总结一下</h3>
+        <p>zoom:百分比值：
+            <br> zoom:50%，表示缩小到原来的一半。
+            <br> 数值：zoom:0.5，表示缩小到原来的一半。
+            <br> normal关键字：zoom:normal等同于zoom:1.
+            <br>
+        </p>
+        <p>差异：
+            <br>zoom的缩放是相对于左上角的；而scale默认是居中缩放；
+            <br>zoom的缩放改变了元素占据的空间大小；而scale的缩放占据的原始尺寸不变，页面布局不会发生变化；
+            <br>zoom和scale对元素的渲染计算方法可能有差异（如下截图示意）。
+            <br>
+        </p>
+    </div>
+</body>
+
+</html>

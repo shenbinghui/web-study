@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js数据类型</title>
+</head>
+<script>
+	console.log(typeof('abc')); //string
+	console.log(typeof(100));   //number
+	console.log(typeof(true));  //boolean
+	console.log(typeof(undefined));//undefined
+    console.log(typeof({})); //object
+    console.log(typeof([])); //object
+    console.log(typeof(null));//object
+
+    console.log('----------------------------------');
+
+    console.log('abc' instanceof String); //false
+	console.log(100 instanceof Number);   //false
+	console.log(true instanceof Boolean);  //false
+	//console.log(undefined instanceof undefined);//undefined
+    console.log({} instanceof Object); //true
+    console.log([] instanceof Array); //true
+    //console.log(null instanceof NULL);//object
+
+    let obj = {};
+	let arr = [];
+	 
+	console.log(Object.prototype.toString.call(obj)); //[object Object]
+	console.log(Object.prototype.toString.call(arr)); //[object Array]
+	console.log(Object.prototype.toString.call(null)); //[object Null]
+	
+</script>
+<body>
+	js分为两种数据类型
+	<p>1、基本数据类型：字符、数字、布尔、undefined</p>
+	<p>2、引用数据类型：对象、数组、null</p>
+	<p>想知道是什么类型用typeof,能完全分开以上类型吗？</p>
+	<h5>对于引用类型，用typeof，无法区分引用类型</h5>
+	<p>那用instanceof试试！！！</p>
+	<h5>所以结果出问题了，因为instanceof只能用来判断对象和函数，不能用来判断字符串和数字等</h5>
+	<h4>所有 typeof(obj) === 'object' 就判断obj的类型是Object是不正确的！</h4>
+	<p>使用Object.prototype.toString.call</p>
+</body>
+</html>

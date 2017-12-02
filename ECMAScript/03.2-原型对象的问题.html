@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function Car(name){
+		this.name = name ;
+	}
+
+	Car.prototype.price = [];
+
+	var bc = new Car('bc');
+	var bmw = new Car("bmw");
+
+	bc.price.push(10);
+	bc.price.push(20);
+
+	console.log(bc.price); //[10,20]
+	console.log(bmw.price);//[10,20] 只是在bc上增加了价格，但是bmw上面也会有价格，因为指向同一个空间了
+</script>
+<body>
+	<p>型中所有属性是被很多实例共享的，这种共享对于函数非常合适。对于那些包含基本值的属性倒也说得过去，通过在实例上添加一个同名属性，可以隐藏原型中的对应属性。然而，对于包含引用类型值的属性来说(不如数组)，问题就比较突出了。</p>
+    <div>解决方法：</div>
+	<div><h5>创建自定义类型的最常见方式，就是组合使用构造函数模式与原型模式。构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。</h5></div>
+
+</body>
+</html>

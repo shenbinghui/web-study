@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="../../lib/require.js"></script>
+        <script type="text/javascript">
+            require.config({
+            	paths:{
+            		//'jquery':'http://libs.baidu.com/jquery/2.0.3/jquery'  //不需要带.js
+            		// 'jquery':['../../lib/jquery.min']  //本地加载
+            		'jquery':['http://libs.baidu.com/jquery/2.0.3/jquery1','../../lib/jquery.min'] //前一个加载网络js不成功，就加载后面的本地js
+            	}
+            });
+
+            require(["jquery","a"],function($){
+            	$(function(){
+            		alert('load success!');
+            	});
+            	
+            });
+        </script>
+    </head>
+    <body>
+      <span>body</span>
+    </body>
+</html>

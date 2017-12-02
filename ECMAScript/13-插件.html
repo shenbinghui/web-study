@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+
+	;(function(window,document){
+        function Test(dom,options){
+        	if(!(this instanceof Test))
+        		return new Test(dom,options);
+
+            this.opts = this.extend({color:'black'},options);
+            //this.opts = options;
+            console.log(typeof dom);
+            if((typeof dom) === 'string'){
+                this.targetDom = document.querySelector(dom);
+                console.log(this.targetDom);
+            }else{
+            	this.targetDom = dom;
+            }
+
+            this.setColor();
+        }
+        
+        Test.prototype = {
+            extend:function(obj,obj2){
+	            for(var k in obj2){
+	                obj[k] = obj2[k];
+	            }
+	            return obj;
+            },
+
+        	setColor:function(){
+                //var _this = this;
+                this.targetDom.style.color = this.opts.color;
+        	}
+        }
+
+        window.Test = Test;
+
+	})(window,document);
+
+
+	window.onload = function(){
+        Test('.div1');
+	}
+	
+    </script>
+</head>
+<body>
+	<div class='div1'>aaa</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css 自定义css属性</title>
+	<style>
+	  :root { 
+	  	--color: blue; 
+	  	--red-color:red;
+	  }
+
+	  div { --color: green; }
+	  #alert { --color: red; }
+	  * { color: var(--color); }
+      .my{
+      	background: var(--red-color)
+      }
+
+	</style>
+</head>
+<body>
+	<p>css变量分为定义和使用：定义的时候使用--name:value的格式。name是取得css定义的
+	名称，value就是对应的值了。</p>
+
+<p>蓝色</p>
+<div>绿色</div>
+<div id="alert">红色</div>
+<div class='my'>my</div>
+</body>
+</html>

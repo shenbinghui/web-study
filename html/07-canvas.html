@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+</head>
+<script>
+	window.onload = function(){
+		var cvs  = document.getElementById("mycanvas");
+		var ctx = cvs.getContext('2d');//准备一张纸
+        ctx.lineWidth = 2;//笔的粗细
+        ctx.strokeStyle = "red";//笔的颜色
+        ctx.moveTo(10,10);//笔的起点
+        ctx.lineTo(100,200);//画的位置
+        ctx.stroke(); //画了
+	}
+</script>
+<body>
+	<canvas id='mycanvas'></canvas>
+</body>
+</html>

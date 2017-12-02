@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>html2canvas example</title>
+    <script type="text/javascript" src="../lib/html2canvas.js"></script>
+</head>
+<script type="text/javascript">
+    function takeScreenshot() {
+        console.log('test');
+        html2canvas(document.getElementById('view'), {
+            onrendered: function(canvas) {
+                document.body.appendChild(canvas);
+            },
+             width: 300,
+             height: 300
+        });
+    }
+</script>
+
+<body>
+    <div id="view" style="background:url(./img/2.jpg) 50%; width: 50px; height: 50px;">
+        <input type="button" value="截图" onclick="takeScreenshot()">
+    </div>
+</body>
+
+</html>

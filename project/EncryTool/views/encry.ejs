@@ -1,0 +1,12 @@
+<div class='mr encry'>
+	<form method="post" action='/encry'>
+	    <input type='submit' value='加密' class='btn btn-primary btn-sm'/>
+		<div><textarea rows='10' cols='115' name='encryfile'></textarea></div>
+	</form>
+	<form method="post" action='/decry'>
+	    <input type='submit' value='解密' class='btn btn-primary btn-sm'/>
+		<div><textarea rows='10' cols='115' name='encryfile'></textarea></div>
+	</form>
+	<h4>Result:</h4>
+	<textarea style="border:1px solid #000;width: 98%;height:50%;word-break: break-all;margin-bottom:5px"><%=encrydata %></textarea>
+</div>

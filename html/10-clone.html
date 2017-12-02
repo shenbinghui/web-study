@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    var user = {
+        name: '姓名',
+        gender: '性别',
+        Tags: ['标签1', '标签2']
+    }
+
+    Object.prototype.clone = function() {
+        var newObj = {};
+        console.log(this)
+        for (var key in this) {
+            if (this.hasOwnProperty(key)) {
+                console.log(key);
+                newObj[key] = this[key];
+            }
+        }
+        return newObj;
+    };
+
+    var jack = user.clone();
+    jack.name = 'jack';
+    jack.gender = '男';
+    jack.Tags.push('男神');
+
+    console.log(jack)
+
+    var mary = user.clone();
+    mary.name = 'mary';
+    mary.gender = '女';
+    mary.Tags.push('女神');
+    console.log(mary)
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

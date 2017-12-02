@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function A(name){
+		this.name = 'aaa';
+		this.show = function(name){
+			console.log(this.name);
+			//console.log(arguments);
+		}
+	}
+    //console.log(new A('TEST'));
+	function B(){
+		this.name='bbb';
+		this.read = function(book){
+			console.log(book);
+		}
+	}
+
+	var a = new A('a');
+	var b = new B();
+
+	//A.call(b,'ccc');  //call是复制，b拥有A的东东了！！！
+    a.show.call(b); 
+
+	
+
+</script>
+<body>
+	
+</body>
+</html>

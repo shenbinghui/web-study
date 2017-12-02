@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Server Sent</title>
+</head>
+<style>
+	body:{
+		background:#009987;
+	}
+</style>
+	
+<script>
+	var es = new EventSource('http://localhost:8099');
+	es.addEventListener('message',function(e){
+        console.log(e.data);
+	},false);
+</script>
+<body>
+	
+</body>
+</html

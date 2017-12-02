@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue resource post</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src='./lib/vue-resource.min.js'></script>
+    <style>
+        #reg{
+            background: #999;border:1px solid #000;width:300px;height:300px;padding:20px;margin:40px auto;
+        }
+        #reg 
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>{{message}}</h1>
+        <div>
+            <form action="http://127.0.0.1:3000/post" method='post'>
+                <span>User name:</span><input type="text" name='uname'><br>
+                <span>User password:</span><input type="password"  name='upassword'>
+                <input type="submit" value='submit'>
+            </form>
+        </div>
+        {{regInfo.uname}}
+        <div id='reg'>
+            <p><span>User name:</span><input type="text" v-model='regInfo.uname' ></p>
+            <p><span>User pass:</span><input type="password" v-model='regInfo.upwd'></p>
+            <p><span>User email:</span><input type="email" v-model='regInfo.uemail' ></p>
+            <p style='float:right'><input type="button" value='注册' v-on:click='reg'></p>
+        </div>
+    </div>
+</body>
+<script>
+var vm = new Vue({
+    el: "#div1",
+    data: {
+        message: "hello world!",
+        infos:[],
+        regInfo:{uname:'',upwd:'',uemail:''}
+    
+    },
+
+    methods:{
+        getData: function() {
+        },
+        reg:function(){
+            // console.log(this.regInfo.uname);
+            // console.log(this.regInfo.upwd);
+            // console.log(this.regInfo.uemail);
+            this.$http({
+                url:'http://127.0.0.1:3000/vuepost',
+                method:'POST',
+                // data:reg,
+                data:{username: 'U', password: 'P'},
+                // headers: {"X-Requested-With": "XMLHttpRequest"}
+                // headers:{"Access-Control-Allow-Origin": "*" }
+            }).then(req=>{
+                console.log(req);
+            },req=>{
+                console.log(req);
+            });
+        }
+    }
+
+});
+
+
+vm.getData();
+
+
+</script>
+
+</html>

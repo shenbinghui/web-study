@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>curring</title>
+    <script>
+    //other
+    function a(x){
+    	return function(y){
+    		return function(){
+    			return x+y
+    		};
+    	}
+    }
+    a(1)(2)();
+
+    //1、动态创建函数，根据条件判断，返回符合条件的函数
+    var addEvent = (function() {
+        if (window.addEventListener) {
+            return function(el, sType, fn, capture) {
+                el.addEventListener(sType, function(e) {
+                    fn.call(el, e);
+                    //console.log(this);//button
+                    //fn(e);
+                }, (capture));
+            };
+        } else if (window.attachEvent) {
+            return function(el, sType, fn, capture) {
+                el.attachEvent("on" + sType, function(e) {
+                    fn.call(el, e);
+                });
+            };
+        }
+    })();
+    //?end
+
+    window.onload = function() {
+        var mybtn = document.getElementById('btn');
+        addEvent(mybtn,'click',function(e){
+        	alert("hello.");
+        	//console.log(e);
+        	console.log(this);
+        },false);
+    }
+
+    //把在函数上传一个方法参数，去执行操作
+    //例如模仿bind,在函数上绑定bind方法，传入一个对象作为参数，改变当前函数this的指向
+    Function.prototype.sbhBind = function(obj){
+    	var fn = this;
+        return function(){
+        	return fn.call(obj)
+        };
+    }
+
+    var Info = {
+    	type:'LR112MA'
+    };
+    
+    var type='LR511MA';
+    function test(){
+    	console.log(this.type)
+    }
+    test();//没有绑定 type是windowd的属性
+    var info = test.sbhBind(Info);//test函数绑定info对象，返回的是函数
+    info(); //执行函数，即执行test(),此时的type是Info对象的属性
+    //end
+
+    //参数复用，延迟计算，var total = sum(n1)(n2)(n3)..(nn);
+    //多次累加，返回一个函数，保留参数到内存中，最有一次total()调用并计算
+    //闭包原理
+    function currying(){
+    	var _args = [];
+    	return function(){
+    		if(arguments.length === 0){
+    			//累加操作
+    			return _args.reduce(function(a,b){return a+b});
+    		}else{
+                Array.prototype.push.apply(_args,[].slice.call(arguments));
+                console.log(arguments)
+                // _args.push([].slice.call(arguments));
+                return arguments.callee;
+    		}
+    	}
+    }
+
+    console.log(currying()(3)(5)(6)(4)());
+    
+
+    </script>
+</head>
+
+<body>
+    <button id='btn'>按钮</button>
+    <h5>柯里化的作用：</h5>
+    <p>1、延迟计算</p>
+    <p>2、参数复用</p>
+    <p>3、动态创建函数</p>
+    <a href='http://www.cnblogs.com/zztt/p/4142891.html'>柯里化参考</a>
+</body>
+
+</html>

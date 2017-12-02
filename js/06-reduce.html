@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reduce</title>
+</head>
+<script>
+	var arr1 = [1,2,3,4,5,6,'a','b'];
+
+	var res1 = arr1.reduce(function(a,b){
+		return a+":"+b;
+	});
+
+	//console.log(res1);//1:2:3:4:5:6:a:b
+
+	var arr2 = [1,2,3,4];
+	//p:previousValue (如果有参数则为默认参数，下标为0算，没有就从数组的第一个值算，下标为1)
+	//n:currentDigit c:currentIndex t:array 
+	var res2 = arr2.reduce(function(p,n,c,t){
+		console.log(p+':'+n+':'+c+':'+t);
+		return p;
+		
+	});
+	console.log(res2);
+
+	//console.log(res2);
+
+	function appendCurrent (previousValue, currentValue) {
+        return previousValue + "::" + currentValue;
+    }
+
+	var elements = ["abc", "def", 123, 456];
+	var result = elements.reduce(appendCurrent,2);
+	//console.log(result);
+
+
+
+</script>
+<body>
+	<p>reduce干什么用的？</p>
+	<p>把数组转换成自己想要的东东，比如自定义字符串，求和等等</p>
+</body>
+</html>

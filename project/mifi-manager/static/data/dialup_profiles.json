@@ -1,0 +1,38 @@
+{
+  "response": {
+    "CurrentProfile": "2",
+    "Profiles": {
+      "Profile": [
+        {
+          "Index": "1",
+          "IsValid": "1",
+          "Name": "CMNET",
+          "ApnIsStatic": "1",
+          "ApnName": "cmnet",
+          "AuthMode": "4",
+          "IpIsStatic": "0",
+          "DnsIsStatic": "0",
+          "ReadOnly": "2",
+          "NetMode": "3",
+          "Connmode": "3"
+        },
+        {
+          "Index": "2",
+          "IsValid": "1",
+          "Name": "1",
+          "ApnIsStatic": "1",
+          "ApnName": "q",
+          "DialupNum": "2",
+          "Username": "admin",
+          "Password": "admin",
+          "AuthMode": "0",
+          "IpIsStatic": "0",
+          "DnsIsStatic": "0",
+          "ReadOnly": "0",
+          "NetMode": "3",
+          "Connmode": "3"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+	function *AsyncHandle(){
+		yield 'hello';
+		yield 'world';
+		return 'ending';
+	}
+
+	var handle = AsyncHandle();
+	console.log(handle.next()); //{value: "hello", done: false}
+	console.log(handle.next()); //{value: "world", done: false}
+	console.log(handle.next()); //{value: "ending", done: true}
+	console.log(handle.next()); //{value: undefined, done: true}
+
+
+</script>
+<body>
+	
+</body>
+</html>

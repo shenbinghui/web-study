@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>深度复制</title>
+</head>
+<script>
+	var a = 'a';
+	console.log(a.toString());  //a
+	console.log(Object.prototype.toString.call(a));//[object String]
+
+	function isClass(o){
+        if(o === null) return "Null";
+        if(o === undefined) return "Undefined";
+        return Object.prototype.toString.call(o).slice(8,-1);
+	}
+
+	var o1 = {a:1};
+	console.log(isClass(o1));//Object
+	var o2 = [1,2,3];
+	console.log(isClass(o2));// Array
+	var o3 = 3;
+	console.log(isClass(o3));//Number
+	var o4 = 'bac';
+	console.log(isClass(o4));//String
+	var o5 = true;
+	console.log(isClass(o5));//Boolean
+
+</script>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 入门一下</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="div1">
+        <h1>{{message}}</h1>
+        <input  type="text" v-model="message"/>
+
+    </div>
+
+    <div id="app-2">
+      <span v-bind:title="message">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+      </span><br>
+        <span title="这个没有用动态绑定">test</span>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+    <div id="app-5">
+        <button v-on:click="addData">点击加载数据</button>
+        <button v-on:click="deleteData">点击删除数据</button>
+    </div>
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+        <test-tem></test-tem>
+    </div>
+
+
+
+</body>
+
+<script>
+    Vue.component('test-tem',{
+        template:'<div>testdddddd</div>'
+    });
+
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+                console.log(this);
+            }
+        }
+    })
+
+    var app5 = new Vue({
+        el:"#app-5",
+        methods:{
+            addData:function(){
+                app4.todos.push({text:"from app5"});
+            },
+            deleteData:function(){
+                app4.todos.pop();
+            }
+        }
+    });
+
+    console.log(app4);
+
+    var app4 = new Vue({
+        el:"#app-4",
+        data:{
+            todos:[
+                {text:'test1'},
+                {text:'test2'},
+                {text:'test3'},
+                {text:'test4'}
+            ]
+
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    })
+
+    var vm = new Vue({
+        el:"#div1",
+        data:{
+            message:"hello world!"
+        }
+    });
+
+    var app2 = new Vue({
+        el:'#app-2',
+        data:{
+            message:'页面加载与：'+new Date()
+        }
+    });
+</script>
+</html>

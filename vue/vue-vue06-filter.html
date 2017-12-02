@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue filter</title>
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="./lib/vue.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <div>过滤器</div>
+        自定义过滤器<div>{{ message | myAdd }}</div>
+        <input type='text' v-model='data'>
+        {{data | dataFilter}}
+    </div>
+</body>
+
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'Love',
+            data:1
+        },
+        filters:{
+            myAdd:function(v){
+                return v+'you!!!';
+            },
+            dataFilter:function(v){
+                if(v == ''){
+                    return 'empty'
+                }else{
+                    return v+'.'
+                }
+            }
+        }
+    });
+</script>
+</html>

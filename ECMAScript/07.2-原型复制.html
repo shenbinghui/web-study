@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制继承</title>
+</head>
+<script>
+    this["shenbh"] = "shenbh";
+    this.bing = 'bing';
+    console.log(this);
+
+
+	function funcA(){
+	    this.name="hello";
+	    this.show=function(){
+	        console.log(this.name);
+	    }
+	}
+
+	function funcB(){
+	    this.extend=function(o){
+	        for(var p in o){
+	            this[p]=o[p];
+	        }
+	    }
+	}
+
+	var a=new funcA();
+	var b=new funcB();
+	b.extend(a);
+	console.log(b);
+	b.show();
+</script>
+<body>
+	
+</body>
+</html>

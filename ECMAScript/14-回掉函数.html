@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回掉函数</title>
+	<script src='../lib/jquery.min.js'></script>
+</head>
+<script>
+    //setTimeout有两个参数，一个是function，一个是毫秒时间
+    //时间过了5秒，执行回调函数
+	setTimeout(function(){
+		console.log('hello world');
+	},5000);
+    
+    //获取类型函数
+	function getType(data){
+		return Object.prototype.toString.call(data).slice(8,-1).toLowerCase();
+	}
+
+    //console.log(getType([]));
+	//console.log(typeof myEach);//function
+
+    //这个地方只是一个函数传入两个参数，第二个是一个函数
+	function myEach(data,callback){
+		//判断传入的数据是什么类型
+		if(getType(data) === 'array'){
+            for(var i=0;i<data.length;i++){
+            	if((typeof callback) === 'function'){
+            		callback(i,data[i]);
+            		return 1;
+            	}
+            }
+		}
+	}
+
+	var arr = ['mifi','ufi','dongle'];
+	var rs = myEach(arr,function(key,value){
+        console.log(key+"="+value);//
+	});
+	console.log('rs='+rs); //1
+
+    //jQuery 插件写法
+    ;(function($){
+        $.fn.getLiValue = function(callback){
+        	//console.log(this);
+	        for(var i = 0;i<this.length;i++){
+	        	 //callback();//这样写会使得回掉后的this为window
+                 callback.call(this[i]); //这样写把callback的指向当前的this 的dom元素
+		    }
+        };
+    })(jQuery);
+
+	window.onload = function(){
+		document.getElementById('btn1').onclick = function(){
+            console.log(this);
+		    $('li').getLiValue(function(){
+		    	console.log($(this).text());
+		    });
+
+	    }
+	}
+
+    //模拟一个add函数，参数是一个函数，返回值是这个回掉函数的返回值
+	function add(callback){
+		return callback(1,3);
+	}
+    
+    //var a=1,b=2;
+	var c1 = add(function(a,b){
+		return a+b;
+	})
+
+	console.log('c1='+c1);
+
+	Array.prototype.add2 = function(callback){
+        var _this = this;
+        var len = _this.length;
+        var rs = 0;
+        for(var i=0;i<len;i++){
+            rs += _this[i];
+        }
+        return callback(rs);
+	}
+
+	var n = [1,2,3,4,5];
+	var rs3= n.add2(function(tt){
+        return tt;
+	});
+	console.log(rs3);
+
+
+	
+</script>
+<body>
+	<button id='btn1'>按钮</button>
+	<ul>
+		<li>首页</li>
+		<li>短信</li>
+		<li>设置</li>
+	</ul>
+</body>
+</html>

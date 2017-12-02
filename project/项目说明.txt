@@ -1,0 +1,23 @@
+【ImeiDataSys】
+Imei号管理系统，提供给工厂对接的imei号可视化生产工具，可以导入excel,增加，修改、删除以及批量删除操作，支持分页操作等。
+
+前端vue(webpack)+后端nodejs（express）提供api
+
+
+【mifi-manager】
+mifidata web，前端展现，功能包括主页、短信、管理、更新等操作
+主要是前端vue(webpack)
+
+【node_blog】
+nodejs写的博客网站。 
+nodejs(express)
+
+【node_chat】
+nodejs写的聊天
+基于nodejs 的socketio+前端的websocket
+
+【shop】
+打算做一个水果商店的，暂时没时间做
+
+【EncryTool】
+文件加密/解密工具

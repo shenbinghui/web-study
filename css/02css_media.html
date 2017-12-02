@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css 响应式布局</title>
+	<style>
+        body{
+        	--color:red;
+        }
+
+        .bg-color{
+        	background: var(--color)
+        }
+
+        @media screen  and (max-width:700px) {
+        	body{
+        		--color:blue;
+        	}
+        }
+
+
+	</style>
+</head>
+<body>
+	<div>默认情况下，文件背景色为：红色，此处做了个响应式处理，就是当屏幕尺寸改变的时候，背景色为：蓝色</div>
+    <div class='bg-color'>我是一段文字，假装很长吧。。。</div>
+
+</body>
+</html>

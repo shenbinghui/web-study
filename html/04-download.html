@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        var button = document.querySelector('input[type="button"]');
+
+    	function downText(content,filename){
+    		var ele = document.createElement('a');
+    		ele.download = filename;
+
+    		var blob = new Blob([content]);
+    		ele.href = URL.createObjectURL(blob);
+
+    		document.body.appendChild(ele);
+    		ele.click();
+
+    		document.body.removeChild(ele);
+    	}
+
+    	if('download' in document.createElement('a')){
+            button.addEventListener('click',function(){
+            	downText('shenbh','shenbh.txt');
+            })
+    	}else{
+            button.onclick = function(){
+            	alert('浏览器不支持');
+            }
+    	}
+    }
+</script>
+<body>
+	<p>download 属性</p>
+	<div>
+		<a href="./img/2.jpg" >点我下载</a>
+		<a href="./img/2.jpg" download>点我下载</a>
+    </div>
+    <div>
+        <p>动态实现下载文本</p>
+		<input type="button" value='下载'>
+	</div>
+</body>
+</html>

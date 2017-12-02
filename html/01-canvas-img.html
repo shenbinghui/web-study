@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 画图</title>
+	<style>
+		*{padding:0;margin:0;}
+	</style>  
+	<script type="text/javascript" src="js/stackblur.js"></script>
+	<script>
+		window.onload = function(){
+			var cvs = document.getElementById('canvas1');
+            var ctx = cvs.getContext('2d');
+			var img = document.getElementById('img1');
+
+			ctx.drawImage(img,50,50);    //从起点开始画
+			// ctx.drawImage(img,50,50,500,200); //从起点(50,10)开始画，大小500*200
+			// ctx.drawImage(img,30,30,200,200,10,10,200,200); //从图片位置（30，30）切，大小（200，200）.然后从（10，10）起点画图，宽*高 200*200
+
+			// stackBlurCanvasRGBA("canvas1",0,0,300,300,60);
+			StackBlur.canvasRGBA("canvas1", 0, 0, 300, 200, 60); 
+
+		}
+	</script>
+</head>
+
+<body>
+
+	<!-- <img src='./img/2.jpg' id='img2'> -->
+
+
+    <canvas width='500' height="300" id="canvas1"></canvas>
+    	
+	<img src='./img/2.jpg' id='img1'>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width:100px;
+			height:30px;
+			background:#999000;
+			margin:1px 0 5px 5px;
+		}
+		/*通过伪类在元素前面增加一个红色区块*/
+		.book:before{
+			content:'';
+			display: block;
+			width:5px;
+			background: red;
+			height:30px;
+		}
+        /*添加边框，只要左边部分即可*/
+		.mark{
+			box-sizing: border-box;
+			border-left:5px solid red;
+		}
+
+        /*阴影，需要补充学习*/
+        .box{
+        	box-sizing: border-box;
+        	box-shadow: -5px 0 0 0 red;
+        }
+        
+        /*内阴影，需要补充学习*/
+        .hourse{
+        	box-shadow: inset 5px 0 0 0 red;
+        }
+
+        /*滤镜*/
+        .mifi{
+        	filter: drop-shadow(-5px 0 0 red);
+        	-webkit-filter:drop-shadow(-5px 0 0 red);
+        }
+ 
+        /*渐变*/
+        .phone{
+            background-image: linear-gradient(90deg,red 0,red 5px,transparent 5px)
+        }
+ 
+        /*滚动条*/
+        .screen{
+            overflow-y: scroll;
+            width:205px;
+        }
+
+        .screen::-webkit-scrollbar{
+        	background-color: red;
+        	width:200px;
+        }
+
+	</style>
+</head>
+<body>
+	<div class='book'></div>
+	<div class='mark'></div>
+	<div class='box'></div>
+	<div class='hourse'></div>
+	<div class='mifi'></div>
+	<div class='phone'></div>
+	<div class='screen'></div>
+
+</body>
+</html>

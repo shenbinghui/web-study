@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script>
+     
+	window.onload = function(){
+        var cMain = document.getElementById('main');
+		var cDiv =  document.createElement('div');
+		var content = '<h4>create element</h4><p style="color:red">this is content!</p>';
+
+		cMain.appendChild(cDiv);
+		cDiv.innerHTML = (content);
+		
+	}
+</script>
+<body>
+	<div id='main'></div>
+</body>
+</html>

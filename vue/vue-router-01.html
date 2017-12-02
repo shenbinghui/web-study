@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>router 入门一</title>
+	<script src='https://unpkg.com/vue/dist/vue.js'></script>
+	<script src='https://unpkg.com/vue-router/dist/vue-router.js'></script>
+	<style>
+		a {background:#eee;padding:0 10px;margin:2px;}
+	</style>
+</head>
+<body>
+    <div id='app'>
+    	<h1>hello</h1>
+    	<router-link to='/foo'>got to foo</router-link>
+    	<router-link to='/too'>got to too</router-link>
+    	<router-link to='/user/u1'>got to user</router-link>
+    	<router-link to='/user/u2'>got to user</router-link>
+
+    	<router-view></router-view>
+    </div>
+</body>
+<script>
+	const foo = {template:"<h3>foo</h3>"};
+	const too = {template:"<h3>too</h3>"};
+	const user = {template:"<h3>user {{$route.params.id}}</h3>"};
+
+	var routes = [
+        {path:'/foo',component:foo},
+        {path:'/too',component:too},
+        {path:'/user/:id',component:user}
+	];
+
+	var  router = new VueRouter({
+		routes
+	});
+
+	var vue = new Vue({
+		router
+	}).$mount('#app');
+
+	// var vue = new Vue({
+	// 	el:"#app",
+	// 	router
+	// });
+</script>
+</html>

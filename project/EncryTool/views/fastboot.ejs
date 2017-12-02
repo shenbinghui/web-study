@@ -1,0 +1,28 @@
+<div class='mr fastboot'>
+    <div class='earse'>
+	    <div><label><input type="checkbox" id='eraseCb'>全选</label><input type="button" value='擦除' id='eraseBtn' class='btn btn-primary btn-sm'></div>
+	    <div><label><input  class='erasetxt' type="checkbox" value='adb shell reboot-bootloader'> 进入fastboot模式</label></div>
+	    <div><label><input  class='erasetxt' type="checkbox" value='fastboot erase boot -i 0x161c'>  擦除 <strong>boot</strong>  </label></div>
+	    <div><label><input class='erasetxt' type="checkbox" value='fastboot erase sbl2 -i 0x161c'>  擦除<strong>sbl2</strong></label></div>
+	    <div><label><input class='erasetxt' type="checkbox" value='fastboot reboot -i 0x161c'> 重启</label></div>
+    </div>
+    <hr/><br/>
+    <div class='download'>
+    	<div><input id='downloadCb' type="checkbox"><input type="button" value='烧写' id='downloadBtn' class='btn btn-primary btn-sm'></div>
+        <div><label><input type="checkbox" value='1'> adb shell reboot-bootloader</label></div>
+    	<div><label><input type="checkbox" value='1'> fastboot erase <strong>boot</strong> -i 0x161c</label></div>
+	    <div><label><input type="checkbox" value='1'> fastboot erase <strong>userdata</strong> -i 0x161c</label></div>
+	    <div><label><input type="checkbox"> fastboot erase <strong>system</strong> -i 0x161c</label></div>
+	    <div><label><input type="checkbox"> fastboot flash <strong>boot</strong> d:\boot-oe-msm9615.img -i 0x161c</label></div>
+	    <div><label><input type="checkbox"> fastboot flash <strong>system</strong> d:\9615-cdp-image-9615-cdp.yaffs2 -i 0x161c</label></div>
+	    <div><label><input type="checkbox"> fastboot flash <strong>userdata</strong>  d:\9615-cdp-usr-image.usrfs.yaffs2 -i 0x161c</label></div>
+	    <div><label><input type="checkbox"> fastboot reboot -i 0x161c</label></div>
+    </div>
+    <hr/><br/>
+    <div class='cmd'>
+    	<div><input type="button" value='操作' id='opera' class='btn btn-primary btn-sm'></div>
+    	<div><input type="text"></div>
+    	<div><h3>result:</h3><div></div></div>
+    </div>
+
+</div>

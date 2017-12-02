@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位</title>
+</head>
+<style>
+	#content{
+		margin: 10px auto;
+		width:600px;
+		height:380px;
+		border:1px solid black;
+		position: relative;
+	}
+
+    .abso{
+        position: absolute;
+        top:0;
+        right:0;
+    }
+
+    .rela{
+    	position:relative;
+    	left:100px;
+    	top:100px;
+
+    }
+</style>
+<body>
+	<div id='content'>	
+        <img src="../html/img/2.jpg" alt="">
+        <span class='abso' style='color:red'>这是一段文字</span>
+        <span class='rela' style='color:blue'>这是另一段文字</span>
+	</div>
+	<div>
+		相对定位：是指相对自己上下左右移动 <br/>
+		绝对定位：是相对于自己的父容器进行上下左右移动，如果父容器没有设置定位。则父容器为body
+	</div>
+</body>
+</html>

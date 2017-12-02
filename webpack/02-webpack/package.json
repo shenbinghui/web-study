@@ -1,0 +1,10 @@
+{
+  "name": "02-webpack",
+  "version": "1.0.0",
+  "description": "02-webpack project",
+  "scripts": {
+    "start": "webpack"
+  },
+  "author": "sbh",
+  "license": "ISC"
+}

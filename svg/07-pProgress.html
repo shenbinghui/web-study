@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>项目--进度圈</title>
+</head>
+<style>
+    #rect{
+        width:100px;
+        height:100px;
+        border:2px dashed red
+    }
+	#progress{
+        stroke-dasharray:94px;
+        stroke-dashoffset:94px;
+        animation:progressAnimation 600ms linear infinite
+	}
+
+	@keyframes progressAnimation{
+	    from{
+            stroke-dashoffset:94px
+	    }
+
+	    to{
+            stroke-dashoffset:282px
+	    }
+	}
+</style>
+
+<body>
+	<div>
+	    <svg width="500" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	        <circle id='backdrop' cx='100' cy='100' r='90' stroke-width='3' stroke='#333' fill='none' />
+	        <circle id='progress' cx='100' cy='100' r='90' stroke-width='4' stroke='red' fill='none' />
+	    </svg>
+    </div>
+    <div id='rect'>
+    	
+    </div>
+</body>
+
+</html>
