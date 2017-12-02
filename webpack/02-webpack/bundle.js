@@ -68,30 +68,32 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-class Hello{
-    show(){
-    	return 'hello world111aadfafdadfa这种aa';
-    }
+// class Hello{
+//     show(){
+//     	return 'hello world111aadfafdadfa这种aa';
+//     }
+// }
+
+function Hello(){
+	this.show = function(){
+		return "1";
+	}
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (new Hello());  //es6的语法
-// module.exports = new Hello();  //nodejs CommonJs规范
+// export default new Hello();  //es6的语法
+module.exports = new Hello();  //nodejs CommonJs规范
 // module.exports = 'hello world!!'
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hello__ = __webpack_require__(0);
-// var hello = require('./hello');  //CommonJs
-   //es6标准
-document.write(__WEBPACK_IMPORTED_MODULE_0__hello__["a" /* default */].show());
+var hello = __webpack_require__(0);  //CommonJs
+// import hello from './hello'   //es6标准
+document.write(hello.show());
 
 // document.write(require('./hello'));
 
