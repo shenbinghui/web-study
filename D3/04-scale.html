@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门-比例尺</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<script>
+	window.onload = function(){
+		// 线性比例尺
+        var data = [0.3,1.1,2.3,0.8,3.3,2.5];
+        var max = d3.max(data);//求数组最大值
+        var min = d3.min(data);//求数组最小值
+
+		/*domain设定比例尺的定义域*/
+        /*range设定值域*/
+        /*新版本d3.scale.linear()报错*/
+        var linearScale = d3.scaleLinear()
+                          .domain([min,max]) 
+                          .range([0,300]);    
+
+        console.log(linearScale(0.3));
+        console.log(linearScale(0.5));
+        console.log(linearScale(3.3));
+ 
+        // 2.序数比例尺
+        var index = [0, 1, 2, 3, 4];
+		var color = ["red", "blue", "green", "yellow", "black"];
+
+		var ordeinalScale = d3.scaleOrdinal()
+		                    .domain(index)
+		                    .range(color);
+
+		console.log(ordeinalScale(0));
+		console.log(ordeinalScale(2));
+		console.log(ordeinalScale(4));
+
+
+		//给下面的柱形添加比例尺
+		var svgWidth = 400;
+		var svgHeight = 400;
+		var rectHeight =25;
+
+		// var data = [120,30,45,22,18,34,100];
+		var svg = d3.select('#ddd')
+		            .append('svg')
+		            .attr('width',svgWidth)
+		            .attr('height',svgHeight)
+		            .selectAll('rect')
+					.data(data)
+					.enter()
+					.append('rect')
+					.attr('x',20)
+					.attr('y',function(d,i){return i*rectHeight})
+					.attr('width',function(d){return linearScale(d)})  //此处用比例尺
+					.attr('height',rectHeight-2)
+					.attr('fill',"steelblue");
+
+	}
+	
+    
+	
+</script>
+<body>
+	<div>
+		<ul>
+			<li>线性比例尺</li>
+			<li>序数比例尺</li>
+		</ul>
+	</div>
+	<div id='ddd'>
+	</div>
+</body>
+</html>

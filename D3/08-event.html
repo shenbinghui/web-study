@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门-动态操作</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+	<script>
+
+		var svgWidth = 400;
+		var svgHeight = 400;
+
+		var svg = d3.select('body').append('svg').attr('width',svgWidth).attr('height',svgHeight);
+
+		var circle1 = svg.append('circle').attr('cx',100).attr('cy',100).attr('r',30).attr('fill','blue')
+		    .on('click',function(){alert(2)})
+		    // .on('mouseover',function(){alert(22)})
+		    // .on('keydown',function(){alert('test')})
+		          
+</script>
+</body>
+</html>

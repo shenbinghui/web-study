@@ -1,4 +1,4 @@
-nodejs新特性的语法需要babel支持
+es6新特性的语法需要babel支持
 例如async/await 
 1-新建.babelrc
 {

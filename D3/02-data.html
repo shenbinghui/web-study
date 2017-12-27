@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<script>
+	window.onload = function(){
+		let arr = ['a','b','c'];
+	    let p = d3.select('body').selectAll('p');
+	    p.data(arr).text(function(d,i){return d});
+	}
+	
+    
+	
+</script>
+<body>
+	<p>1</p>
+	<p>2</p>
+	<p>3</p>
+</body>
+</html>

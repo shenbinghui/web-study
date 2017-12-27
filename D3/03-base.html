@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门-svg绘图</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<script>
+	window.onload = function(){
+		var svgWidth = 400;
+		var svgHeight = 400;
+		var rectHeight =25;
+
+		var data = [120,30,45,22,18,34,100];
+		var svg = d3.select('body')
+		            .append('svg')
+		            .attr('width',svgWidth)
+		            .attr('height',svgHeight)
+		            .selectAll('rect')
+					.data(data)
+					.enter()
+					.append('rect')
+					.attr('x',20)
+					.attr('y',function(d,i){return i*rectHeight})
+					.attr('width',function(d){return d})
+					.attr('height',rectHeight-2)
+					.attr('fill',"steelblue");
+
+
+	}
+	
+    
+	
+</script>
+<body>
+</body>
+</html>

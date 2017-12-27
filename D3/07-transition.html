@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门-动态效果</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<script>
+	window.onload = function(){
+		//svg
+        var svg = d3.select('body')
+                    .append('svg')
+                    .attr('width',400)
+                    .attr('height',400);
+
+        //圆1
+        var circle1 = svg.append('circle')
+                        .attr('cx',50)
+                        .attr('cy',50)
+                        .attr('r',20)
+                        .attr('fill','green')	
+        //circle1 cx沿着x轴位移
+        circle1.transition()
+               .duration(3000)
+               .attr('cx',300);
+
+        //圆2
+        var circle2 = svg.append('circle')
+                         .attr('cx',50)
+                         .attr('cy',80)
+                         .attr('r',20)
+                         .attr('fill','red');
+        //改变颜色和位移
+        circle2.transition()
+               .duration(1000)
+               .attr('cx',300)
+               .attr('fill','yellow')
+
+        //圆3
+        var circle3 = svg.append('circle')
+                         .attr('cx',50)
+                         .attr('cy',150)
+                         .attr('r',20)
+                         .attr('fill','red');
+        circle3.transition()
+              .duration(2000)
+              .attr('cx',300)
+              .attr('fill','blue')
+              .attr('r',30)
+	}
+	
+    
+	
+</script>
+<body>
+</body>
+</html>

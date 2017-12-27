@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>D3入门-布局之力导向图</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+    <script>
+    var nodes = [{ name: "BeiJing" }, { name: "XiaMen" },
+        { name: "XiAn" }, { name: "HangZhou" },
+        { name: "ShangHai" }, { name: "QingDao" },
+        { name: "NanJing" }
+    ];
+
+    var links = [{ source: 0, target: 1 }, { source: 0, target: 2 },
+        { source: 0, target: 3 }, { source: 1, target: 4 },
+        { source: 1, target: 5 }, { source: 1, target: 6 }
+    ];
+
+    var width = 800;
+    var height = 600;
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // 通过布局来转换数据，然后进行绘制
+    var simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).distance(100))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width / 2, height / 2));
+
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    console.log(nodes);
+    console.log(links);
+
+    // 绘制
+    var svg_links = svg.selectAll("line")
+        .data(links)
+        .enter()
+        .append("line")
+        .style("stroke", "#ccc")
+        .style("stroke-width", 3);
+
+    var svg_nodes = svg.selectAll("circle")
+        .data(nodes)
+        .enter()
+        .append("circle")
+        .attr("r", 10)
+        .style("fill", function(d, i) {
+            return color(i);
+        })
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+
+    var svg_text = svg.selectAll("text")
+        .data(nodes)
+        .enter()
+        .append("text")
+        .style("fill", "#000")
+        .attr("dx", 20)
+        .attr("dy", 10)
+        .text(function(d) { return d.name; });
+
+    console.log(svg_nodes);
+
+    function draw() {
+        svg_nodes
+            .attr("cx", function(d) { console.log(d); return d.x; })
+            .attr("cy", function(d) { return d.y; });
+
+        svg_text
+            .attr("x", function(d) { return d.x; })
+            .attr("y", function(d) { return d.y; });
+
+        svg_links
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+    }
+    simulation.on("tick", draw);
+    //draw();
+    </script>
+</body>
+
+</html>

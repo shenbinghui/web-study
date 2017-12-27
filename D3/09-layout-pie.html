@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D3入门-布局之饼状图</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+
+<body>
+	<script>
+		//创建svg
+		var width = 400;
+		var height = 400;
+		var svg = d3.select('body').append('svg').attr('width',400).attr('height',400);
+	    var color = d3.schemeCategory10;
+		var dataset = [ 30 , 10 , 43 , 55 , 13 ];	
+	    var outerRadius = 150; //外半径
+		var innerRadius = 0; //内半径，为0则中间没有空白
+
+		//1 数据转换，得到绘图所需数据(布局)	
+	    var piedata = d3.pie()(dataset);
+
+	    //2 生成器
+	    //弧生成器，能够生成弧的路径，因为饼图的每一部分都是一段弧
+        var arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+
+        //3 把数据添加到svg中
+        var arcs = svg.selectAll('g').data(piedata).enter().append('g').attr('transform','translate('+width/2+','+width/2+')');
+
+        //4 用生成器绘图
+        arcs.append('path').attr('fill',function(d,i){return color[i]}).attr('d',function(d){console.log(d);return arc(d)})
+
+        //5 添加文字
+        arcs.append('text').attr('transform',function(d){return 'translate('+arc.centroid(d)+')'})
+            .attr('text-anchor','middle').text(function(d){return d.data});
+
+   
+	</script>
+</body>
+</html>

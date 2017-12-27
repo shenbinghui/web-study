@@ -1,0 +1,14 @@
+{
+  "name": "02-webpack",
+  "version": "1.0.0",
+  "description": "02-webpack project",
+  "scripts": {
+    "start": "webpack",
+    "server": "webpack-dev-server --open"
+  },
+  "author": "sbh",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack-dev-server": "^2.9.5"
+  }
+}
