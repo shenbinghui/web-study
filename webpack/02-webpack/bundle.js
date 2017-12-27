@@ -94,7 +94,11 @@ module.exports = new Hello();  //nodejs CommonJs规范
 var hello = __webpack_require__(0);  //CommonJs
 // import hello from './hello'   //es6标准
 document.write(hello.show());
+<<<<<<< HEAD
 vv
+=======
+
+>>>>>>> bc0e34f9e282c5a3b9d5283ed11ddf3134c3506f
 // document.write(require('./hello'));
 
 /***/ })

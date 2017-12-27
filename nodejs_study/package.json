@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "serialport": "^6.0.4",
+    "serialport-js": "^1.1.0",
     "stackblur-canvas": "^1.4.0"
   },
   "devDependencies": {

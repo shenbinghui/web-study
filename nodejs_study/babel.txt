@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 es6新特性的语法需要babel支持
+=======
+nodejs新特性的语法需要babel支持
+>>>>>>> bc0e34f9e282c5a3b9d5283ed11ddf3134c3506f
 例如async/await 
 1-新建.babelrc
 {
