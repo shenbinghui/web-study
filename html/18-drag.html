@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+    body,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    code,
+    form,
+    fieldset,
+    legend,
+    input,
+    button,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #fff;
+        color: #555;
+        font-size: 14px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    td,
+    th,
+    caption {
+        font-size: 14px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: normal;
+        font-size: 100%;
+    }
+
+    address,
+    caption,
+    cite,
+    code,
+    dfn,
+    em,
+    strong,
+    th,
+    var {
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    a {
+        color: #555;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    img {
+        border: none;
+    }
+
+    ol,
+    ul,
+    li {
+        list-style: none;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+        font: 14px Verdana, Helvetica, Arial, sans-serif;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    html {
+        overflow-y: scroll;
+    }
+
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
+
+    #ball {
+
+        background: red;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        left: 40px;
+        top: 60px;
+    }
+
+    #ball:hover{
+    	cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id='ball'></div>
+    </div>
+    <script>
+    var ball = document.getElementById('ball');
+    var param = {};
+    //按下小球
+    ball.onmousedown = function(ev) {
+        var _event = ev || event;
+        // console.log(_event);
+        param.currentX = _event.clientX;
+        param.currentY = _event.clientY;
+        param.initX = ball.offsetLeft;  
+        param.initY = ball.offsetTop; 
+        param.flag = true;
+
+ 
+    }
+
+    //鼠标移动
+    window.onmousemove = function(ev) {
+    	var e = ev || event;
+    	if(param.flag){
+            var nowX = e.clientX;
+	        var nowY = e.clientY;
+	        ball.style.left = nowX - param.currentX + param.initX +'px';
+	        ball.style.top = nowY - param.currentY + param.initY +'px';
+    	}
+        
+        
+    }
+
+    //鼠标抬起
+    window.onmouseup = function() {
+        param.flag = false;
+    }
+
+    </script>
+</body>
+
+</html>

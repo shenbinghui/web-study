@@ -37,6 +37,26 @@ function long(){
   }
   $('#status').text('calclation done') // has to be in here for this example. or else it will ALWAYS run instantly. This is the same as passing it a callback 
 }
+
+Object.create1 = function(obj){
+  function F(){}
+  F.prototype = obj;
+  return new F();
+}
+
+function Base(){
+  this.age = '111'
+}
+
+Base.prototype.say = function(){
+  console.log(this.name);
+}
+
+var b1 = new Base();
+var b2 = Object.create1(Base);
+
+console.log(b1.age);
+console.log(b2.age);
 </script>
 </body>
 </html>

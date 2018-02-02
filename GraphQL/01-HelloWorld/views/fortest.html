@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>fortest</title>
+</head>
+
+<body>
+    <div id="lampadadfario">
+        <input type="text">
+    </div>
+    <script src='jquery.min.js'></script>
+    <script>
+        document.cookie="username=John Smith; expires=Thu, 18 Dec 2018 12:00:00 GMT; path=/fortest/cookie1";
+        document.cookie="age=12; expires=Thu, 18 Dec 2018 12:00:00 GMT; path=/fortest/cookie1";
+    	$.ajax({
+            type:'GET',
+            url:"/?query={user {id name}}",
+            success:function(res){
+                console.log(res)
+                // console.log(res.data.user.id);
+                // console.log(res.data.user.name);
+            }
+        });
+    </script>
+</body>
+
+</html>

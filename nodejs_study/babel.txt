@@ -1,18 +1,31 @@
-<<<<<<< HEAD
+
 es6新特性的语法需要babel支持
-=======
-nodejs新特性的语法需要babel支持
->>>>>>> bc0e34f9e282c5a3b9d5283ed11ddf3134c3506f
-例如async/await 
-1-新建.babelrc
+
+例如 import/form  async/await 
+
+1 安装 core 和命令行工具
+$ npm install --save-dev babel-core babel-cli 
+
+2 安装所有插件
+$ npm install --save-dev babel-plugin-transform-strict-mode babel-plugin-transform-es2015-modules-commonjs  babel-plugin-transform-es2015-spread babel-plugin-transform-es2015-destructuring babel-plugin-transform-es2015-parameters
+
+
+3 创建.babelrc,内容如下
 {
-  "presets": ["stage-3", "es2015"],
-  "plugins": ["transform-runtime"]
+  "plugins": [
+    "transform-strict-mode",
+    "transform-es2015-modules-commonjs",
+    "transform-es2015-spread",
+    "transform-es2015-destructuring",
+    "transform-es2015-parameters"
+  ]
 }
 
 
-2-npm i babel-core babel-plugin-transform-runtime babel-preset-es2015 babel-preset-stage-3 babel-runtime --save安装一堆需要的插件
+4 运行
+babel-node    xxx.js
 
-3-文件中增加
-require("babel-core/register");
+
+【参考文档】
+http://taobaofed.org/blog/2016/01/07/find-back-the-lost-es6-features-in-nodejs/
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp 跨域</title>
+    <script src='../lib/jquery.min.js'></script>
+</head>
+
+<body>
+    <input id='jsonp' type='button' value='jsonp' />
+    <div id='txt'></div>
+    <script>
+        $('#jsonp').click(function(){
+            $.ajax({
+                url:'http://localhost:3000/fortest/jsonp',
+                type:'GET',
+                dataType:'jsonp',
+                success:function(data){
+                    var rs = JSON.stringify(data);
+                    $('#txt').text(rs);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

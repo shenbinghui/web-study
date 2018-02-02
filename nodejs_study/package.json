@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-gyp": "^3.6.2",
+    "robotjs": "^0.4.7",
     "serialport": "^6.0.4",
     "serialport-js": "^1.1.0",
     "stackblur-canvas": "^1.4.0"

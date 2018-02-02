@@ -3,6 +3,15 @@ Imei号管理系统，提供给工厂对接的imei号可视化生产工具，可
 
 前端vue(webpack)+后端nodejs（express）提供api
 
+[1] 打开数据库
+cd C:\Program Files\MongoDB\Server\3.2\bin
+mongod --dbpath  D:\tmp\mongodb\nodeblog
+
+[2] 运行项目
+cd D:\project\web_study\github\project\EncryTool
+supervisor D:\project\web_study\github\project\EncryTool\index
+
+
 
 【mifi-manager】
 mifidata web，前端展现，功能包括主页、短信、管理、更新等操作
@@ -21,3 +30,11 @@ nodejs写的聊天
 
 【EncryTool】
 文件加密/解密工具
+
+【Koa-blog】
+koa2+mysql  
+async+await
+
+【serialport】
+socket io
+

@@ -8,19 +8,19 @@
 </head>
 <script>
 	$(function(){
-		// $.ajax({
-  //           type:'GET',
-  //           url:"http://127.0.0.1:3000/login",
-  //           success:function(res){
-  //               console.log(res);
-  //           }
-		// });
-
-		$('#content').load('http://127.0.0.1:3000/html',function(response,status){
-			console.log(response);
-			console.log(status);
-			getUrl();
+		$.ajax({
+            type:'GET',
+            url:"http://192.168.100.39:3000/turnoff",
+            success:function(res){
+                console.log(res);
+            }
 		});
+
+		// $('#content').load('http://127.0.0.1:3000/html',function(response,status){
+		// 	console.log(response);
+		// 	console.log(status);
+		// 	getUrl();
+		// });
 	});
 </script>
 <body>
